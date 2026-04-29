@@ -1,36 +1,963 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Luke's Website</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        text-align: center;
-        padding: 50px;
-      }
-      h1 {
-        color: #333;
-        font-size: 48px;
-      }
-      p {
-        color: #666;
-        font-size: 20px;
-      }
-      .card {
-        background: white;
-        border-radius: 12px;
-        padding: 40px;
-        max-width: 600px;
-        margin: 0 auto;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <h1>Welcome to Luke's Website!</h1>
-      <p>This is my first page hosted on GitHub.</p>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plait | Human strategy. AI velocity.</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080b12;
+    --white: #ffffff;
+    --accent: #3B82F6;
+    --accent-soft: #60A5FA;
+    --accent-glow: rgba(59,130,246,0.15);
+    --accent2: #06B6D4;
+    --gray: #0d1117;
+    --gray2: #131922;
+    --gray3: #1c2533;
+    --muted: #6b7a99;
+    --border: rgba(59,130,246,0.12);
+    --border2: rgba(255,255,255,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+  /* PLAIT LOGO */
+  .nav-logo, .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; letter-spacing: 0.02em; text-transform: lowercase; }
+  .nav-logo { font-size: 1.5rem; color: var(--white); text-decoration: none; display: inline-flex; align-items: baseline; }
+  .footer-logo { font-size: 1.3rem; color: var(--white); display: inline-flex; align-items: baseline; }
+  .logo-ai {
+    color: var(--white);
+    animation: flashAI 3s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes flashAI {
+    0%, 100% { color: var(--white); }
+    50% { color: var(--accent-soft); }
+  }
+  .logo-dot { color: var(--accent-soft); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.3rem; border-radius: 4px; }
+
+  /* HERO */
+  #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 5% 6rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 85% 40%, rgba(59,130,246,0.1) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 15% 70%, rgba(6,182,212,0.06) 0%, transparent 60%); pointer-events: none; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px); background-size: 50px 50px; pointer-events: none; }
+
+  /* MONEY EXPLOSION */
+  .money-explosion { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .money { position: absolute; font-size: 2rem; opacity: 0; will-change: transform, opacity; }
+  .money.go { animation: moneyBurst 2.8s cubic-bezier(0.2, 0.7, 0.3, 1) forwards; }
+  @keyframes moneyBurst {
+    0% { opacity: 0; transform: translate(0, 0) scale(0.3) rotate(0deg); }
+    15% { opacity: 1; transform: translate(calc(var(--dx) * 0.3), calc(var(--dy) * 0.3)) scale(1.2) rotate(calc(var(--rot) * 0.3)); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.6) rotate(var(--rot)); }
+  }
+  .hero-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .hero-label::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--accent-soft); }
+  .hero-headline { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.0; letter-spacing: 0.01em; text-transform: uppercase; max-width: 960px; margin-bottom: 1rem; }
+  .hero-headline .static { color: var(--white); display: block; }
+  .hero-headline .dynamic-wrap { display: block; color: var(--accent-soft); min-height: 1.1em; }
+  .cursor { display: inline-block; width: 3px; height: 0.85em; background: var(--accent-soft); margin-left: 4px; vertical-align: middle; animation: blink 0.8s step-end infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .hero-orbit-link { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.75rem; font-weight: 600; color: var(--accent2); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; margin-bottom: 2rem; transition: background 0.2s; width: fit-content; }
+  .hero-orbit-link:hover { background: rgba(6,182,212,0.14); }
+  .hero-tagline { font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: var(--muted); font-weight: 400; max-width: 540px; line-height: 1.75; margin-bottom: 2.8rem; }
+  .hero-tagline strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 5rem; }
+  .btn-primary { background: var(--accent); color: white; padding: 0.9rem 2rem; border-radius: 4px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s, transform 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+  .btn-secondary { border: 1px solid rgba(255,255,255,0.15); color: white; padding: 0.9rem 2rem; border-radius: 4px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: inline-block; }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+  .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+  .hero-stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 2.4rem; color: var(--white); line-height: 1; letter-spacing: 0.02em; }
+  .hero-stat-num span { color: var(--accent-soft); }
+  .hero-stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.05em; font-weight: 500; }
+
+  /* SECTIONS */
+  section { padding: 7rem 5%; }
+  .section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.7rem; }
+  .section-label::before { content: ''; display: inline-block; width: 22px; height: 1px; background: var(--accent-soft); }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 620px; font-weight: 400; }
+  .divider { height: 1px; background: var(--border2); margin: 0 5%; }
+
+  /* LOGO MARQUEE */
+  .marquee-section { padding: 3rem 0 4rem; background: var(--black); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); overflow: hidden; position: relative; }
+  .marquee-label { text-align: center; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+  .marquee-wrap { position: relative; overflow: hidden; mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%); }
+  .marquee-track { display: flex; gap: 4rem; width: max-content; animation: scrollMarquee 40s linear infinite; align-items: center; }
+  .marquee-item { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.55); transition: color 0.3s; flex-shrink: 0; white-space: nowrap; }
+  .marquee-item:hover { color: var(--accent-soft); }
+  .marquee-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-soft); flex-shrink: 0; opacity: 0.5; }
+  @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* PLAIT BRAND STORY */
+  #brand-story { background: var(--gray); position: relative; overflow: hidden; }
+  .brand-definition-bar { display: flex; align-items: baseline; flex-wrap: wrap; gap: 1rem; padding: 1.4rem 1.8rem; margin-top: 2.5rem; background: var(--gray2); border: 1px solid var(--border2); border-left: 3px solid var(--accent-soft); border-radius: 8px; }
+  .brand-def-word { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.4rem; text-transform: lowercase; letter-spacing: 0.02em; color: var(--white); }
+  .brand-def-pron { color: var(--muted); font-weight: 500; font-size: 1rem; font-style: italic; margin-left: 0.4rem; }
+  .brand-def-type { font-size: 0.78rem; font-style: italic; color: var(--accent-soft); letter-spacing: 0.04em; }
+  .brand-def-meaning { font-size: 0.92rem; color: rgba(255,255,255,0.78); line-height: 1.65; flex: 1; min-width: 280px; }
+  .brand-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+  .brand-visual { position: relative; height: 380px; display: flex; align-items: center; justify-content: center; }
+  .brand-visual svg { width: 100%; max-width: 500px; height: auto; }
+  .strand { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawStrand 2.2s ease forwards; }
+  .strand.s1 { animation-delay: 0s; }
+  .strand.s2 { animation-delay: 0.2s; }
+  .strand.s3 { animation-delay: 0.4s; }
+  .strand.s4 { animation-delay: 0.8s; }
+  .strand.s5 { animation-delay: 1s; }
+  .strand.s6 { animation-delay: 1.2s; }
+  @keyframes drawStrand { to { stroke-dashoffset: 0; } }
+
+  .brand-content { display: flex; flex-direction: column; gap: 1.5rem; }
+  .brand-pillars { display: flex; flex-direction: column; gap: 1rem; }
+  .pillar { background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 1.4rem; display: flex; gap: 1.2rem; align-items: flex-start; transition: border-color 0.2s; }
+  .pillar:hover { border-color: var(--border); }
+  .pillar-icon { width: 38px; height: 38px; background: var(--accent-glow); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+  .pillar-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-soft); margin-bottom: 0.4rem; }
+  .pillar-text { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+  .brand-conclusion { padding: 1.4rem 1.6rem; background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, var(--gray2) 100%); border: 1px solid var(--border); border-radius: 10px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.4; color: var(--white); }
+  .brand-conclusion span { color: var(--accent-soft); }
+
+  /* PROCESS / WHAT YOU GET (interactive flip cards) */
+  #process { background: var(--gray); }
+  .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 4rem; }
+  .flip-card { perspective: 1200px; height: 280px; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; cursor: pointer; }
+  .flip-card:hover .flip-inner, .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  @media (hover: none) {
+    .flip-card:hover .flip-inner { transform: none; }
+    .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  }
+  .flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .flip-front { background: var(--gray2); border: 1px solid var(--border2); }
+  .flip-back { background: linear-gradient(135deg, var(--accent) 0%, #1e40af 100%); transform: rotateY(180deg); border: 1px solid var(--accent); }
+  .flip-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.18em; color: var(--accent-soft); }
+  .flip-back .flip-num { color: rgba(255,255,255,0.6); }
+  .flip-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.15; }
+  .flip-back .flip-title { color: white; }
+  .flip-hint { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
+  .flip-hint::after { content: '→'; }
+  .flip-back-text { font-size: 0.92rem; color: rgba(255,255,255,0.92); line-height: 1.7; }
+
+  /* PLATFORMS */
+  #platforms { background: var(--black); }
+  .platform-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 4rem; }
+  .platform-tile { background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 2rem 1.5rem; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .platform-tile:hover { border-color: var(--border); transform: translateY(-3px); }
+  .platform-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .platform-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+  .platform-desc { font-size: 0.78rem; color: var(--muted); }
+
+  /* INDUSTRIES */
+  #industries { background: var(--gray); }
+  .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 4rem; }
+  .industry-card { background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 1.8rem; transition: border-color 0.2s, transform 0.2s; }
+  .industry-card:hover { border-color: var(--border); transform: translateY(-3px); }
+  .industry-icon { width: 42px; height: 42px; background: var(--accent-glow); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 1rem; }
+  .industry-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+  .industry-text { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+
+  /* ORBIT */
+  #orbit-section { background: var(--black); position: relative; overflow: hidden; }
+  .orbit-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 4rem; }
+  .orbit-graphic { position: relative; height: 300px; display: flex; align-items: center; justify-content: center; }
+  .orbit-core { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.1rem; color: white; letter-spacing: 0.04em; text-transform: uppercase; box-shadow: 0 0 60px rgba(59,130,246,0.4); position: relative; z-index: 2; }
+  .orbit-ring { position: absolute; border: 1px solid rgba(59,130,246,0.18); border-radius: 50%; }
+  .orbit-ring.r1 { width: 180px; height: 180px; animation: orbitSpin 20s linear infinite; }
+  .orbit-ring.r2 { width: 240px; height: 240px; animation: orbitSpin 30s linear infinite reverse; }
+  .orbit-ring.r3 { width: 300px; height: 300px; animation: orbitSpin 40s linear infinite; }
+  .orbit-dot { position: absolute; width: 10px; height: 10px; background: var(--accent-soft); border-radius: 50%; box-shadow: 0 0 12px var(--accent-soft); }
+  .orbit-ring.r1 .orbit-dot { top: -5px; left: 50%; }
+  .orbit-ring.r2 .orbit-dot { top: 50%; right: -5px; background: var(--accent2); box-shadow: 0 0 12px var(--accent2); }
+  .orbit-ring.r3 .orbit-dot { bottom: -5px; left: 30%; }
+  @keyframes orbitSpin { to { transform: rotate(360deg); } }
+  .orbit-content .orbit-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.72rem; font-weight: 600; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.2rem; text-decoration: none; transition: background 0.2s; }
+  .orbit-content .orbit-badge:hover { background: rgba(6,182,212,0.14); }
+  .orbit-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+  .orbit-feature { background: var(--gray2); border: 1px solid var(--border2); border-radius: 8px; padding: 1rem; }
+  .orbit-feature-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-soft); margin-bottom: 0.4rem; }
+  .orbit-feature-text { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+  .orbit-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent2); font-size: 0.85rem; font-weight: 600; text-decoration: none; padding-top: 0.5rem; transition: gap 0.2s; }
+  .orbit-link:hover { gap: 0.7rem; }
+
+  /* CASE STUDIES SNIPPET */
+  #case-snippet { background: var(--gray); }
+  .case-snippet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 4rem; margin-bottom: 3rem; }
+  .case-snippet-card { background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 1.8rem; transition: border-color 0.2s, transform 0.2s; }
+  .case-snippet-card:hover { border-color: var(--border); transform: translateY(-3px); }
+  .case-snippet-tag { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.7rem; }
+  .case-snippet-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+  .case-snippet-text { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+  .case-snippet-result { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent-soft); }
+  .case-snippet-cta { text-align: center; }
+
+  /* PACKAGES */
+  #packages { background: var(--black); }
+  .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 4rem; }
+  .package-card { background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 2.2rem; display: flex; flex-direction: column; transition: border-color 0.25s; position: relative; overflow: hidden; }
+  .package-card.featured { border-color: var(--accent); background: linear-gradient(135deg, rgba(59,130,246,0.07) 0%, var(--gray2) 60%); }
+  .package-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--accent); color: white; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 100px; }
+  .package-entry { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+  .package-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+  .package-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.2rem; line-height: 1.5; }
+  .package-desc { font-size: 0.83rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 1.5rem; }
+  .package-includes { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+  .package-list { list-style: none; margin-bottom: 2rem; flex: 1; }
+  .package-list li { font-size: 0.82rem; color: rgba(255,255,255,0.7); padding: 0.42rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.4; }
+  .package-list li::before { content: '›'; color: var(--accent-soft); font-size: 1rem; flex-shrink: 0; }
+  .package-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--white); margin-bottom: 1rem; letter-spacing: 0.02em; }
+  .package-cta { display: block; text-align: center; padding: 0.85rem; border-radius: 5px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+  .package-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+  .cta-accent { background: var(--accent); color: white; }
+  .cta-outline { border: 1px solid rgba(255,255,255,0.15); color: white; }
+
+  /* TESTIMONIALS CAROUSEL */
+  #testimonials { background: var(--gray); overflow: hidden; }
+  .carousel-wrap { margin-top: 4rem; position: relative; }
+  .carousel-track { display: flex; gap: 1.5rem; transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
+  .carousel-card { flex: 0 0 calc(50% - 0.75rem); background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 2.2rem; transition: border-color 0.2s; }
+  .carousel-card:hover { border-color: var(--border); }
+  .carousel-quote { font-size: 2.2rem; color: var(--accent-soft); line-height: 1; margin-bottom: 0.8rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; opacity: 0.6; }
+  .carousel-text { font-size: 0.92rem; color: rgba(255,255,255,0.8); line-height: 1.85; margin-bottom: 1.5rem; min-height: 180px; }
+  .carousel-author { display: flex; align-items: center; gap: 0.8rem; padding-top: 1.2rem; border-top: 1px solid var(--border2); }
+  .carousel-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.85rem; color: white; flex-shrink: 0; }
+  .carousel-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .carousel-role { font-size: 0.76rem; color: var(--muted); margin-top: 0.1rem; }
+  .carousel-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+  .carousel-dots { display: flex; gap: 0.5rem; }
+  .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; transition: background 0.2s, width 0.2s; padding: 0; }
+  .carousel-dot.active { background: var(--accent-soft); width: 24px; border-radius: 4px; }
+  .carousel-arrows { display: flex; gap: 0.7rem; }
+  .carousel-arrow { width: 42px; height: 42px; border-radius: 50%; background: var(--gray2); border: 1px solid var(--border2); color: white; font-size: 1.1rem; cursor: pointer; transition: border-color 0.2s, background 0.2s; display: flex; align-items: center; justify-content: center; }
+  .carousel-arrow:hover { border-color: var(--accent); background: var(--gray3); }
+  .carousel-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* ABOUT */
+  #about { background: var(--black); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; margin-bottom: 5rem; }
+  .mission-quote { font-size: 0.85rem; font-style: italic; color: var(--accent-soft); margin-bottom: 1.5rem; letter-spacing: 0.03em; opacity: 0.85; line-height: 1.6; }
+  .mission-text { font-size: 1.05rem; color: rgba(255,255,255,0.78); line-height: 1.85; font-weight: 400; }
+  .beliefs-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2rem; }
+  .beliefs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .belief-card { background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 1.6rem; transition: border-color 0.2s; }
+  .belief-card:hover { border-color: var(--border); }
+  .belief-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-soft); margin-bottom: 0.7rem; }
+  .belief-text { font-size: 0.83rem; color: var(--muted); line-height: 1.75; }
+  .belief-text strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+  /* CONTACT */
+  #contact { background: var(--gray); }
+  .contact-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+  .contact-inner .section-label { justify-content: center; }
+  .contact-inner .section-label::before { display: none; }
+  .contact-options { display: flex; gap: 1rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+  .contact-option { background: var(--gray2); border: 1px solid var(--border2); border-radius: 10px; padding: 1.5rem 2rem; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; min-width: 220px; transition: border-color 0.2s, transform 0.2s; }
+  .contact-option:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .contact-option-icon { font-size: 1.3rem; }
+  .contact-option-label { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .contact-option-value { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em; }
+
+  footer { padding: 2rem 5%; border-top: 1px solid var(--border2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeUp 0.65s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+
+  @media (max-width: 900px) {
+    .process-grid, .platform-bar, .industries-grid, .case-snippet-grid, .packages-grid, .beliefs-grid { grid-template-columns: 1fr; }
+    .orbit-inner, .about-grid, .brand-story-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .orbit-features { grid-template-columns: 1fr; }
+    .carousel-card { flex: 0 0 100%; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">pl<span class="logo-ai">ai</span>t<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#brand-story">Why Plait</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#orbit-section">Orbit</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Me</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="money-explosion" id="moneyExplosion"></div>
+  <div class="hero-label fade-up">Human strategy. AI velocity.</div>
+  <h1 class="hero-headline fade-up delay-1">
+    <span class="static">Your Brand's Solution For</span>
+    <span class="dynamic-wrap"><span id="dynamic-text"></span><span class="cursor"></span></span>
+  </h1>
+  <p class="hero-tagline fade-up delay-2">Proven growth systems, fused with AI innovation. I build acquisition systems that convert traffic into customers, combining <strong>battle-tested strategy</strong> with <strong>Orbit</strong>, the AI agent I co-founded.</p>
+  <div class="hero-ctas fade-up delay-3">
+    <a href="#contact" class="btn-primary">Work With Me</a>
+    <a href="#process" class="btn-secondary">See The Process</a>
+  </div>
+  <div class="hero-stats fade-up delay-4">
+    <div class="hero-stat"><div class="hero-stat-num">$2M<span>+</span></div><div class="hero-stat-label">Revenue Produced</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">80<span>+</span></div><div class="hero-stat-label">Brands Scaled</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">11<span>+</span></div><div class="hero-stat-label">Channels to Capture Demand</div></div>
+  </div>
+</section>
+
+<!-- LOGO MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-label">Platforms & Tools I Operate In</div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <!-- First set -->
+      <div class="marquee-item">Google Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Instagram Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Facebook Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">TikTok Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Creative OS</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Orbit LLM</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Google Analytics</div>
+      <div class="marquee-dot"></div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="marquee-item">Google Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Instagram Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Facebook Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">TikTok Ads</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Creative OS</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Orbit LLM</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">Google Analytics</div>
+      <div class="marquee-dot"></div>
     </div>
-  </body>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BRAND STORY -->
+<section id="brand-story">
+  <div class="section-label">Why "Plait"</div>
+  <h2 class="section-title">Alone they're weak.<br>Woven, they're unstoppable.</h2>
+  <p class="section-sub">A single strand can fray. Three strands plaited together hold under pressure. Your ads, your website, and your attribution are no different.</p>
+
+  <div class="brand-definition-bar">
+    <div class="brand-def-word">plait <span class="brand-def-pron">/plāt/</span></div>
+    <div class="brand-def-type">noun</div>
+    <div class="brand-def-meaning">A single length formed by intertwining three or more strands together. Stronger, more flexible, and more resistant to unraveling than any single strand alone.</div>
+  </div>
+
+  <div class="brand-story-grid">
+    <div class="brand-visual">
+      <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- LEFT: Three weak separate strands -->
+        <g>
+          <text x="105" y="30" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Barlow Condensed" font-weight="700" font-size="14" letter-spacing="2">ALONE</text>
+          <!-- Frayed thin strand 1 -->
+          <path class="strand s1" d="M 60 60 Q 65 120, 55 180 Q 70 240, 60 320" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
+          <text x="60" y="345" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="1.5">ADS</text>
+          <!-- Frayed thin strand 2 -->
+          <path class="strand s2" d="M 105 60 Q 100 130, 110 190 Q 95 250, 105 320" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
+          <text x="105" y="345" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="1.5">SITE</text>
+          <!-- Frayed thin strand 3 -->
+          <path class="strand s3" d="M 150 60 Q 155 120, 145 180 Q 160 250, 150 320" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
+          <text x="150" y="345" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="1.5">ATTRIBUTION</text>
+        </g>
+
+        <!-- DIVIDER ARROW -->
+        <g>
+          <line x1="200" y1="190" x2="290" y2="190" stroke="var(--accent-soft)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
+          <polygon points="285,184 295,190 285,196" fill="var(--accent-soft)" opacity="0.7"/>
+        </g>
+
+        <!-- RIGHT: Three intertwined strong strands -->
+        <g>
+          <text x="395" y="30" text-anchor="middle" fill="var(--accent-soft)" font-family="Barlow Condensed" font-weight="700" font-size="14" letter-spacing="2">WOVEN</text>
+          <!-- Strand 1 (blue) - weaves over/under -->
+          <path class="strand s4" d="M 350 60 Q 420 90, 350 130 Q 420 170, 350 210 Q 420 250, 350 290 Q 420 320, 350 320" stroke="#3B82F6" stroke-width="4" stroke-linecap="round"/>
+          <!-- Strand 2 (cyan) - weaves opposite -->
+          <path class="strand s5" d="M 420 60 Q 350 90, 420 130 Q 350 170, 420 210 Q 350 250, 420 290 Q 350 320, 420 320" stroke="#06B6D4" stroke-width="4" stroke-linecap="round"/>
+          <!-- Strand 3 (light blue) - center wave -->
+          <path class="strand s6" d="M 385 60 Q 385 100, 385 130 Q 385 170, 385 210 Q 385 250, 385 290 Q 385 320, 385 320" stroke="#60A5FA" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+          <!-- Connection nodes glowing -->
+          <circle cx="385" cy="100" r="5" fill="#60A5FA"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/></circle>
+          <circle cx="385" cy="180" r="5" fill="#06B6D4"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
+          <circle cx="385" cy="260" r="5" fill="#3B82F6"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+          <text x="385" y="345" text-anchor="middle" fill="var(--accent-soft)" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="1.5">ONE SYSTEM</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="brand-content">
+      <div class="brand-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">⚡</div>
+          <div class="pillar-body">
+            <div class="pillar-title">Communication</div>
+            <div class="pillar-text">Your ads speak the same language as your landing pages. Your messaging carries from the first impression to the final conversion.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-body">
+            <div class="pillar-title">Clarity</div>
+            <div class="pillar-text">Attribution that actually tells the story. You see what's working, what isn't, and what to do next, in plain language.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔗</div>
+          <div class="pillar-body">
+            <div class="pillar-title">One System</div>
+            <div class="pillar-text">Ads, website, and attribution working together instead of separately. When one strand learns, the others get sharper.</div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-conclusion">
+        That's what happens when your <span>ads, website, and attribution</span> stop operating in isolation and start operating as one.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS / WHAT YOU GET -->
+<section id="process">
+  <div class="section-label">What You Can Expect</div>
+  <h2 class="section-title">Real outcomes.<br>Built into the process.</h2>
+  <p class="section-sub">Hover (or tap on mobile) any card to see what working with me actually unlocks for your business.</p>
+  <div class="process-grid">
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-num">01 / Performance</div>
+          <div class="flip-title">Higher ROAS</div>
+          <div class="flip-hint">Tap to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-num">01</div>
+          <div class="flip-back-text">Smarter spend, sharper targeting, and creative built to convert. Every dollar is accountable to a goal, and every campaign is structured to push return on ad spend up over time.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-num">02 / Efficiency</div>
+          <div class="flip-title">Lower CAC</div>
+          <div class="flip-hint">Tap to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-num">02</div>
+          <div class="flip-back-text">Tightened funnels, refined audience strategy, and continuous testing drive customer acquisition costs down. Less waste, more efficient growth.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-num">03 / Visibility</div>
+          <div class="flip-title">Better Attribution</div>
+          <div class="flip-hint">Tap to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-num">03</div>
+          <div class="flip-back-text">Clean tracking. Deduplicated events. Pixel and conversion API setups that tell the real story of where revenue actually comes from. No more guessing.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-num">04 / Creative</div>
+          <div class="flip-title">Converting Content Strategy</div>
+          <div class="flip-hint">Tap to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-num">04</div>
+          <div class="flip-back-text">I ideate the hooks, angles, and messaging that actually convert. I don't shoot the videos, but I can connect you with creators who do. Strategy first, production second.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-num">05 / Discovery</div>
+          <div class="flip-title">New Audience Unlocks</div>
+          <div class="flip-hint">Tap to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-num">05</div>
+          <div class="flip-back-text">Most brands only sell to one audience. I uncover the secondary and tertiary buyer markets you didn't know existed, opening up entirely new revenue streams through systematic testing.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-num">06 / Foundation</div>
+          <div class="flip-title">A System That Compounds</div>
+          <div class="flip-hint">Tap to reveal</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-num">06</div>
+          <div class="flip-back-text">Every test, campaign, and conversion feeds the next. You don't just get short-term wins, you get a learning system that gets sharper, more efficient, and more profitable over time.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <div class="section-label">Where I Run</div>
+  <h2 class="section-title">Every channel<br>that captures demand.</h2>
+  <p class="section-sub">I run paid acquisition across the platforms where your audience actually lives, with a strategy custom-fit to each.</p>
+  <div class="platform-bar">
+    <div class="platform-tile">
+      <div class="platform-icon">📘</div>
+      <div class="platform-name">Meta</div>
+      <div class="platform-desc">Facebook & Instagram</div>
+    </div>
+    <div class="platform-tile">
+      <div class="platform-icon">🔍</div>
+      <div class="platform-name">Google</div>
+      <div class="platform-desc">Search, Display, YouTube</div>
+    </div>
+    <div class="platform-tile">
+      <div class="platform-icon">🎵</div>
+      <div class="platform-name">TikTok</div>
+      <div class="platform-desc">Spark Ads & Creator</div>
+    </div>
+    <div class="platform-tile">
+      <div class="platform-icon">💼</div>
+      <div class="platform-name">LinkedIn</div>
+      <div class="platform-desc">B2B & Enterprise</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="section-label">Who I Scale</div>
+  <h2 class="section-title">Industries built<br>to grow.</h2>
+  <p class="section-sub">Different industries need different systems. Here's where I've built the most leverage.</p>
+  <div class="industries-grid">
+    <div class="industry-card">
+      <div class="industry-icon">🛒</div>
+      <div class="industry-name">E-Commerce / DTC</div>
+      <div class="industry-text">Direct-to-consumer brands looking to scale paid acquisition profitably and lift LTV through smart funnel work.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">💻</div>
+      <div class="industry-name">SaaS</div>
+      <div class="industry-text">Subscription products needing consistent pipeline growth, lower CAC, and structured trial-to-paid conversion.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🏢</div>
+      <div class="industry-name">B2B</div>
+      <div class="industry-text">Enterprise and mid-market brands building demand engines, capturing intent, and shortening sales cycles.</div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">📱</div>
+      <div class="industry-name">App Promotion</div>
+      <div class="industry-text">Mobile apps driving installs, activations, and long-term retention through paid + CRO + attribution systems.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ORBIT -->
+<section id="orbit-section">
+  <div class="section-label">My AI Edge</div>
+  <h2 class="section-title">Orbit. Built by me.<br>Working for you.</h2>
+  <p class="section-sub">Orbit is the AI agent I co-founded. It's how I deliver agency-quality work as a solo operator, and why my clients get more, faster, for less.</p>
+  <div class="orbit-inner">
+    <div class="orbit-graphic">
+      <div class="orbit-ring r3"><div class="orbit-dot"></div></div>
+      <div class="orbit-ring r2"><div class="orbit-dot"></div></div>
+      <div class="orbit-ring r1"><div class="orbit-dot"></div></div>
+      <div class="orbit-core">ORBIT</div>
+    </div>
+    <div class="orbit-content">
+      <a href="https://orbitllm.com/" target="_blank" class="orbit-badge">⚡ Visit orbitllm.com</a>
+      <p style="color:rgba(255,255,255,0.78); line-height:1.85; font-size:0.98rem; margin-bottom:1rem;">Most marketers guess. I connect insights. Orbit accelerates everything from research and audience discovery to creative ideation and campaign analysis, turning days of work into hours and uncovering patterns no human could spot alone.</p>
+      <div class="orbit-features">
+        <div class="orbit-feature">
+          <div class="orbit-feature-title">Day-to-Day</div>
+          <div class="orbit-feature-text">Research, ad copy iteration, creative briefs, audience analysis, and campaign post-mortems delivered at AI speed.</div>
+        </div>
+        <div class="orbit-feature">
+          <div class="orbit-feature-title">Long-Term</div>
+          <div class="orbit-feature-text">Pattern recognition across campaigns and clients, building a strategic intelligence system that compounds over time.</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); line-height:1.8; font-size:0.86rem; margin-bottom:1rem;">A tech stack worth thousands per month, included at no extra cost, because I built it.</p>
+      <a href="https://orbitllm.com/" target="_blank" class="orbit-link">Explore the platform →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CASE STUDIES SNIPPET -->
+<section id="case-snippet">
+  <div class="section-label">Proof</div>
+  <h2 class="section-title">Real systems.<br>Real results.</h2>
+  <p class="section-sub">A glimpse at what's possible. Each story is a snapshot of strategy, execution, and outcome.</p>
+  <div class="case-snippet-grid">
+    <div class="case-snippet-card">
+      <div class="case-snippet-tag">SaaS · Account Restructure</div>
+      <div class="case-snippet-name">Extern</div>
+      <div class="case-snippet-text">Consolidated fragmented campaigns into a unified evergreen system that compounded results fast, turning a fiscally constrained audience into consistent converters.</div>
+      <div class="case-snippet-result">90% CAC Reduction</div>
+    </div>
+    <div class="case-snippet-card">
+      <div class="case-snippet-tag">Mobile App · Acquisition & CRO</div>
+      <div class="case-snippet-name">Ivy Dating</div>
+      <div class="case-snippet-text">Lean paid campaigns paired with CRO work, refining onboarding, notifications, and in-app prompts to reduce friction and lift retention.</div>
+      <div class="case-snippet-result">345% Active User Jump</div>
+    </div>
+    <div class="case-snippet-card">
+      <div class="case-snippet-tag">Enterprise · Awareness at Scale</div>
+      <div class="case-snippet-name">Airia</div>
+      <div class="case-snippet-text">AI platform partnered with Williams F1 needed massive enterprise visibility. Strategic paid media + creative velocity = 30M+ reached.</div>
+      <div class="case-snippet-result">89% CPM Reduction</div>
+    </div>
+  </div>
+  <div class="case-snippet-cta">
+    <a href="case-studies.html" class="btn-primary">View All Case Studies</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="section-label">Packages</div>
+  <h2 class="section-title">Choose how we<br>work together.</h2>
+  <p class="section-sub">Whether you need a diagnostic, a full launch, or an ongoing growth partner, there's a system built for your stage.</p>
+  <div class="packages-grid">
+    <div class="package-card">
+      <div class="package-entry">Entry Point</div>
+      <div class="package-name">Clarity Audit</div>
+      <div class="package-sub">Find the leaks before spending another dollar</div>
+      <div class="package-desc">You're running ads, you have a product, but something isn't converting. I'll identify exactly where money is being lost and give you a prioritized action plan to fix it.</div>
+      <div class="package-includes">What's Included</div>
+      <ul class="package-list">
+        <li>Full Meta or TikTok ad account audit</li>
+        <li>Landing page and funnel teardown</li>
+        <li>Conversion rate analysis (CRO quick wins)</li>
+        <li>Tracking and pixel health check</li>
+        <li>Written report with prioritized recommendations</li>
+        <li>60-min debrief call</li>
+        <li>Audit report + 90-day growth roadmap</li>
+        <li>Delivered within 5 business days</li>
+      </ul>
+      <div class="package-price">$500 – $800 one-time</div>
+      <a href="#contact" class="package-cta cta-outline">Get Started</a>
+    </div>
+    <div class="package-card featured">
+      <div class="package-badge">Most Scalable</div>
+      <div class="package-entry">Done For You</div>
+      <div class="package-name">Launch System</div>
+      <div class="package-sub">Build the full machine, ads, site, content, done for you</div>
+      <div class="package-desc">A complete done-for-you build: your website or landing page, ad campaigns on Meta and/or TikTok, tracking setup, and content direction, all built to work together from day one.</div>
+      <div class="package-includes">What's Included</div>
+      <ul class="package-list">
+        <li>Website or landing page design and build</li>
+        <li>Meta and/or TikTok campaign setup and launch</li>
+        <li>Ad creative direction and content brief</li>
+        <li>Pixel, tracking, and analytics setup</li>
+        <li>30-day post-launch support and optimization</li>
+        <li>Handoff documentation so you can manage it yourself</li>
+        <li>2–4 weeks from kickoff to live</li>
+      </ul>
+      <div class="package-price">$2,500 – $4,500 one-time</div>
+      <a href="#contact" class="package-cta cta-accent">Get Started</a>
+    </div>
+    <div class="package-card">
+      <div class="package-entry">Monthly Retainer</div>
+      <div class="package-name">Growth Partner</div>
+      <div class="package-sub">Ongoing ads, CRO, and content strategy, you focus on the product</div>
+      <div class="package-desc">I manage your Meta and TikTok campaigns, run ongoing CRO tests, and drive your content strategy so your creative never goes stale. A dedicated expert without the cost of a full-time hire.</div>
+      <div class="package-includes">What's Included</div>
+      <ul class="package-list">
+        <li>Meta + TikTok ads management and optimization</li>
+        <li>Monthly CRO testing (1–2 page elements per cycle)</li>
+        <li>Content ideation and creative briefs for your team</li>
+        <li>Site updates and landing page iteration</li>
+        <li>Bi-weekly performance calls with reporting</li>
+        <li>Priority support via Slack or DM</li>
+        <li>3-month minimum · month-to-month after</li>
+      </ul>
+      <div class="package-price">$1,500 – $3,500 / month</div>
+      <a href="#contact" class="package-cta cta-outline">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS CAROUSEL -->
+<section id="testimonials">
+  <div class="section-label">Client Love</div>
+  <h2 class="section-title">Don't take<br>my word for it.</h2>
+  <p class="section-sub">Here's what founders and operators say after working with me.</p>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="carousel-card">
+        <div class="carousel-quote">"</div>
+        <div class="carousel-text">Under his management, our trial CAC dropped from $188.13 to $34.09 in one month, outperforming the client's forecast model. He helped clean up campaign structure, optimize Spark ads, and identify top-performing creatives that continue to scale efficiently.</div>
+        <div class="carousel-author"><div class="carousel-avatar">JR</div><div><div class="carousel-name">Jose Rodriguez</div><div class="carousel-role">Co-Founder, Creator Lookup</div></div></div>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-quote">"</div>
+        <div class="carousel-text">Luke is an outstanding ads strategist who combines deep industry knowledge with a strong work ethic. He not only executes at a high level, but brings creative ideas and strategic insight that make a real difference. His professionalism gave me confidence throughout the entire process.</div>
+        <div class="carousel-author"><div class="carousel-avatar">BS</div><div><div class="carousel-name">Brett Stokar</div><div class="carousel-role">Founder & CEO, Ivy Dating App</div></div></div>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-quote">"</div>
+        <div class="carousel-text">Luke did an outstanding job setting up and running both Meta and Google Ads for my business. I could see the results right away, more leads, better structure, and confidence that my campaigns are in good hands. I highly recommend him to anyone looking for paid ads support.</div>
+        <div class="carousel-author"><div class="carousel-avatar">HG</div><div><div class="carousel-name">Hudson Gongwer</div><div class="carousel-role">Founder, HG Training</div></div></div>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-quote">"</div>
+        <div class="carousel-text">At BluRevive we are pioneering wellness in 2026 and needed our web developer to have the right amount of marketing knowledge combined with quickly evolving AI and social media integration, and we've been blessed to have Luke Davidson meld it all together.</div>
+        <div class="carousel-author"><div class="carousel-avatar">KW</div><div><div class="carousel-name">Keith Winsell</div><div class="carousel-role">Founder, BluRevive</div></div></div>
+      </div>
+
+    </div>
+    <div class="carousel-controls">
+      <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow" id="prevBtn">‹</button>
+        <button class="carousel-arrow" id="nextBtn">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">Built to win.<br>Wired to compete.</h2>
+  <div class="about-grid">
+    <div>
+      <div class="mission-quote">"Whatever your hand finds to do, do it with all your might", Ecclesiastes 9:10</div>
+      <p class="mission-text">I am on a mission to be a light in a crowded industry by helping people bring their ideas to life and scale them into making a real impact on people's lives. I believe winning is found in the margins, and I'm committed to turning ideas into reality through a process that values honesty, creativity, and always looking for the next tactical edge.</p>
+    </div>
+    <div>
+      <div class="beliefs-title">Core Beliefs</div>
+      <div class="beliefs-grid">
+        <div class="belief-card">
+          <div class="belief-title">Winning is everything.</div>
+          <div class="belief-text">Aggressive about improvement, disciplined in execution. <strong>Winning conversions</strong>, <strong>winning channels</strong>, and <strong>winning in the margins</strong> that compound over time.</div>
+        </div>
+        <div class="belief-card">
+          <div class="belief-title">Transparency Over Optics.</div>
+          <div class="belief-text">Most agencies optimize for <strong>retention</strong>, not <strong>outcomes</strong>. I do the opposite, you'll see what's working, what isn't, and why.</div>
+        </div>
+        <div class="belief-card">
+          <div class="belief-title">Client Capital is My Capital.</div>
+          <div class="belief-text">Allocation is deliberate, <strong>spend is justified</strong>. If dollars aren't producing, they're questioned, reworked, or pulled.</div>
+        </div>
+        <div class="belief-card">
+          <div class="belief-title">Stewardship Over Exploitation.</div>
+          <div class="belief-text">Restraint, clear tradeoffs, and decisions that leave the business <strong>stronger after the work</strong>, not dependent on it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Let's Build</div>
+    <h2 class="section-title">Ready to turn your<br>traffic into revenue?</h2>
+    <p class="section-sub" style="margin: 0 auto 1rem;">Whether you're starting from scratch or ready to scale, let's talk about what system makes sense for your business.</p>
+    <div class="contact-options">
+      <a href="mailto:kikodavidson11@gmail.com" class="contact-option">
+        <div class="contact-option-icon">✉️</div>
+        <div class="contact-option-label">Email</div>
+        <div class="contact-option-value">kikodavidson11@gmail.com</div>
+      </a>
+      <a href="tel:3607736339" class="contact-option">
+        <div class="contact-option-icon">📞</div>
+        <div class="contact-option-label">Phone</div>
+        <div class="contact-option-value">(360) 773-6339</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">pl<span class="logo-ai">ai</span>t<span class="logo-dot">.</span></div>
+  <div class="footer-copy">© 2026 Plait. All rights reserved.</div>
+</footer>
+
+<script>
+  // Dynamic typing
+  const words = ["Higher Revenue","Paid Advertising","Conversion Rate Optimization","Web Buildouts","Creating Winning Ads","Attribution"];
+  let wordIndex = 0, charIndex = 0, isDeleting = false;
+  const el = document.getElementById('dynamic-text');
+  const moneyContainer = document.getElementById('moneyExplosion');
+
+  function explodeMoney() {
+    const emojis = ['💰', '💵', '💸', '🤑', '💲'];
+    const count = 22;
+    for (let i = 0; i < count; i++) {
+      const m = document.createElement('div');
+      m.className = 'money';
+      m.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+      // Origin: roughly where the headline sits
+      const startX = window.innerWidth * (0.15 + Math.random() * 0.4);
+      const startY = window.innerHeight * (0.35 + Math.random() * 0.2);
+      m.style.left = startX + 'px';
+      m.style.top = startY + 'px';
+
+      // Random burst direction
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 250 + Math.random() * 350;
+      const dx = Math.cos(angle) * distance;
+      const dy = Math.sin(angle) * distance - 100; // bias upward
+      const rot = (Math.random() - 0.5) * 720;
+
+      m.style.setProperty('--dx', dx + 'px');
+      m.style.setProperty('--dy', dy + 'px');
+      m.style.setProperty('--rot', rot + 'deg');
+      m.style.fontSize = (1.5 + Math.random() * 1.8) + 'rem';
+      m.style.animationDelay = (Math.random() * 0.3) + 's';
+
+      moneyContainer.appendChild(m);
+      // Force reflow then animate
+      requestAnimationFrame(() => m.classList.add('go'));
+
+      // Cleanup after animation
+      setTimeout(() => m.remove(), 3500);
+    }
+  }
+
+  function type() {
+    const word = words[wordIndex];
+    if (!isDeleting) {
+      el.textContent = word.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === word.length) {
+        // Trigger money explosion when "Higher Revenue" finishes typing
+        if (word === "Higher Revenue") {
+          explodeMoney();
+        }
+        setTimeout(() => { isDeleting = true; type(); }, 2000);
+        return;
+      }
+    } else {
+      el.textContent = word.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; }
+    }
+    setTimeout(type, isDeleting ? 35 : 60);
+  }
+  type();
+
+  // Carousel
+  const track = document.getElementById('carouselTrack');
+  const cards = track.children;
+  const totalCards = cards.length;
+  const dotsContainer = document.getElementById('carouselDots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+  let cardsPerView = window.innerWidth > 900 ? 2 : 1;
+  let totalPages = Math.ceil(totalCards / cardsPerView);
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    totalPages = Math.ceil(totalCards / cardsPerView);
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goTo(index) {
+    currentIndex = Math.max(0, Math.min(index, totalPages - 1));
+    const offset = currentIndex * 100;
+    track.style.transform = `translateX(-${offset}%)`;
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === totalPages - 1;
+  }
+
+  prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+  nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
+  window.addEventListener('resize', () => {
+    const newCardsPerView = window.innerWidth > 900 ? 2 : 1;
+    if (newCardsPerView !== cardsPerView) {
+      cardsPerView = newCardsPerView;
+      currentIndex = 0;
+      buildDots();
+      goTo(0);
+    }
+  });
+
+  buildDots();
+  goTo(0);
+
+  // Mobile flip support
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
+</script>
+</body>
 </html>
