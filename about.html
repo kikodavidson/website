@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Plait</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#080b12; --white:#fff; --accent:#3B82F6; --accent-soft:#60A5FA; --accent-glow:rgba(59,130,246,0.15); --accent2:#06B6D4; --gray:#0d1117; --gray2:#131922; --gray3:#1c2533; --muted:#6b7a99; --border:rgba(59,130,246,0.12); --border2:rgba(255,255,255,0.06); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5%;background:rgba(8,11,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:0.02em;color:var(--white);text-decoration:none;text-transform:lowercase;display:inline-flex;align-items:baseline;}
+  .logo-ai{color:var(--white);animation:flashAI 3s ease-in-out infinite;display:inline-block;}
+  @keyframes flashAI{0%,100%{color:var(--white);}50%{color:var(--accent-soft);}}
+  .logo-dot{color:var(--accent-soft);}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--white);}
+  .nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:0.5rem 1.3rem;border-radius:4px;}
+  .nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer;}
+
+  .page-header{padding:10rem 5% 4rem;position:relative;overflow:hidden;}
+  .page-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 85% 40%,rgba(59,130,246,0.08) 0%,transparent 65%);pointer-events:none;}
+  .page-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;}
+  .page-label{font-size:0.72rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;position:relative;z-index:1;}
+  .page-label::before{content:'';display:inline-block;width:28px;height:1px;background:var(--accent-soft);}
+  .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;letter-spacing:0.02em;text-transform:uppercase;margin-bottom:1.2rem;max-width:800px;position:relative;z-index:1;}
+  .page-sub{color:var(--muted);font-size:1.1rem;line-height:1.7;max-width:620px;position:relative;z-index:1;}
+
+  section{padding:5rem 5%;}
+  .section-label{font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem;}
+  .section-label::before{content:'';display:inline-block;width:22px;height:1px;background:var(--accent-soft);}
+  .section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.05;letter-spacing:0.02em;text-transform:uppercase;margin-bottom:1.2rem;}
+  .divider{height:1px;background:var(--border2);margin:0 5%;}
+
+  /* MISSION */
+  #mission{background:var(--gray);}
+  .mission-quote{font-size:0.95rem;font-style:italic;color:var(--accent-soft);margin-bottom:1.5rem;letter-spacing:0.03em;opacity:0.85;line-height:1.6;}
+  .mission-text{font-size:1.15rem;color:rgba(255,255,255,0.82);line-height:1.85;font-weight:400;max-width:780px;margin-top:3rem;}
+
+  /* BELIEFS */
+  #beliefs{background:var(--black);}
+  .beliefs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:3rem;}
+  .belief-card{background:var(--gray2);border:1px solid var(--border2);border-radius:10px;padding:2rem;transition:border-color 0.2s;}
+  .belief-card:hover{border-color:var(--border);}
+  .belief-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.2rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-soft);margin-bottom:0.8rem;}
+  .belief-text{font-size:0.92rem;color:rgba(255,255,255,0.72);line-height:1.85;}
+  .belief-text strong{color:rgba(255,255,255,0.9);font-weight:600;}
+
+  /* CTA */
+  #cta{background:var(--gray);text-align:center;}
+  .cta-inner{max-width:680px;margin:0 auto;}
+  .cta-inner .section-label{justify-content:center;}
+  .cta-inner .section-label::before{display:none;}
+  .cta-inner p{color:var(--muted);font-size:1rem;line-height:1.75;margin-bottom:2rem;}
+
+  .btn-primary{background:var(--accent);color:white;padding:0.9rem 2rem;border-radius:4px;font-family:'Barlow',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s,transform 0.2s;display:inline-block;}
+  .btn-primary:hover{opacity:0.88;transform:translateY(-2px);}
+
+  footer{padding:2rem 5%;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:0.02em;text-transform:lowercase;display:inline-flex;align-items:baseline;}
+  .footer-copy{font-size:0.75rem;color:var(--muted);}
+
+  @media (max-width:900px){
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(8,11,18,0.98);flex-direction:column;align-items:flex-start;padding:1.5rem 5%;gap:1.2rem;border-bottom:1px solid var(--border);}
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+    .beliefs-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">pl<span class="logo-ai">ai</span>t<span class="logo-dot">.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Work With Me</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<header class="page-header">
+  <div class="page-bg"></div>
+  <div class="page-grid-bg"></div>
+  <div class="page-label">About</div>
+  <h1 class="page-title">Built to win.<br>Wired to compete.</h1>
+  <p class="page-sub">Plait is run by Luke Davidson, a growth operator who builds acquisition systems for brands serious about scaling.</p>
+</header>
+
+<section id="mission">
+  <div class="section-label">My Mission</div>
+  <h2 class="section-title">Be a light in a<br>crowded industry.</h2>
+  <div class="mission-quote">"Whatever your hand finds to do, do it with all your might" — Ecclesiastes 9:10</div>
+  <p class="mission-text">I am on a mission to be a light in a crowded industry by helping people bring their ideas to life and scale them into making a real impact on people's lives. I believe winning is found in the margins, and I'm committed to turning ideas into reality through a process that values honesty, creativity, and always looking for the next tactical edge.</p>
+</section>
+
+<div class="divider"></div>
+
+<section id="beliefs">
+  <div class="section-label">Core Beliefs</div>
+  <h2 class="section-title">What I stand for.</h2>
+  <div class="beliefs-grid">
+    <div class="belief-card">
+      <div class="belief-title">Winning is everything.</div>
+      <div class="belief-text">This is a competitive field. I treat it like one. That means staying aggressive about improvement, disciplined in execution, and persistent in finding edges others miss, <strong>winning conversions</strong>, <strong>winning channels</strong>, and <strong>winning in the margins</strong> that compound over time.</div>
+    </div>
+    <div class="belief-card">
+      <div class="belief-title">Transparency Over Optics. Always.</div>
+      <div class="belief-text">Most agencies are optimized for <strong>retention</strong>, not <strong>outcomes</strong>. I take the opposite approach. You'll see <strong>what's working</strong>, what isn't, and <strong>why</strong>, in plain language, with full context.</div>
+    </div>
+    <div class="belief-card">
+      <div class="belief-title">Client Capital is My Capital.</div>
+      <div class="belief-text">I treat client capital the same way I treat my own. Allocation is deliberate, <strong>spend is justified</strong>, and nothing runs just to look busy. If dollars aren't producing, they're questioned, reworked, or pulled.</div>
+    </div>
+    <div class="belief-card">
+      <div class="belief-title">Stewardship Over Exploitation.</div>
+      <div class="belief-text">Exploitation shows up as over-spending, over-promising, and over-optimizing for the report instead of the business. Stewardship means restraint, clear tradeoffs, and decisions that leave the business <strong>stronger after the work</strong>, not dependent on it.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="cta">
+  <div class="cta-inner">
+    <div class="section-label">Let's Build</div>
+    <h2 class="section-title">Think we'd be<br>a good fit?</h2>
+    <p>Whether you're starting from scratch or ready to scale, let's talk about what system makes sense for your business.</p>
+    <a href="contact.html" class="btn-primary">Get In Touch</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">pl<span class="logo-ai">ai</span>t<span class="logo-dot">.</span></div>
+  <div class="footer-copy">© 2026 Plait. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
