@@ -27,6 +27,16 @@
   #home{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:10rem 5% 6rem;position:relative;overflow:hidden;}
   .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 85% 40%,rgba(59,130,246,0.1) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 15% 70%,rgba(6,182,212,0.06) 0%,transparent 60%);pointer-events:none;}
   .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;}
+
+  /* FLOWING ROPE */
+  .rope-wrap{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .rope-wrap svg{width:100%;height:100%;}
+  .rope-strand{fill:none;stroke-width:2;stroke-linecap:round;opacity:0.35;}
+  .rope-strand.s1{stroke:#3B82F6;animation:ropeFlow 16s linear infinite;}
+  .rope-strand.s2{stroke:#06B6D4;animation:ropeFlow 16s linear infinite;animation-delay:-5.3s;}
+  .rope-strand.s3{stroke:#60A5FA;animation:ropeFlow 16s linear infinite;animation-delay:-10.6s;}
+  @keyframes ropeFlow{from{stroke-dashoffset:0;}to{stroke-dashoffset:-400;}}
+  .rope-glow{filter:drop-shadow(0 0 8px rgba(59,130,246,0.4));}
   .money-explosion{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
   .money{position:absolute;font-size:2rem;opacity:0;will-change:transform,opacity;}
   .money.go{animation:moneyBurst 2.8s cubic-bezier(0.2,0.7,0.3,1) forwards;}
@@ -75,6 +85,41 @@
   .brand-def-pron{color:var(--muted);font-weight:500;font-size:1rem;font-style:italic;margin-left:0.4rem;}
   .brand-def-type{font-size:0.78rem;font-style:italic;color:var(--accent-soft);letter-spacing:0.04em;}
   .brand-def-meaning{font-size:0.92rem;color:rgba(255,255,255,0.78);line-height:1.65;flex:1;min-width:280px;}
+
+  /* INTERACTIVE PLAIT */
+  .plait-interactive{margin-top:4rem;background:var(--gray2);border:1px solid var(--border2);border-radius:14px;padding:2.5rem;display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center;}
+  .plait-controls-wrap{display:flex;flex-direction:column;gap:1.5rem;}
+  .plait-controls-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-soft);margin-bottom:0.3rem;}
+  .plait-controls-sub{font-size:0.85rem;color:var(--muted);line-height:1.6;margin-bottom:0.5rem;}
+  .plait-toggles{display:flex;flex-direction:column;gap:0.8rem;}
+  .plait-toggle{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--black);border:1px solid var(--border2);border-radius:8px;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+  .plait-toggle:hover{border-color:var(--border);}
+  .plait-toggle.active{border-color:var(--accent);background:linear-gradient(135deg,rgba(59,130,246,0.1) 0%,var(--black) 100%);}
+  .plait-toggle-switch{width:44px;height:24px;background:rgba(255,255,255,0.1);border-radius:100px;position:relative;flex-shrink:0;transition:background 0.3s;}
+  .plait-toggle-switch::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:var(--muted);border-radius:50%;transition:left 0.3s,background 0.3s;}
+  .plait-toggle.active .plait-toggle-switch{background:var(--accent);}
+  .plait-toggle.active .plait-toggle-switch::after{left:22px;background:white;}
+  .plait-toggle-icon{font-size:1.2rem;}
+  .plait-toggle-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:0.04em;flex:1;}
+  .plait-result{margin-top:0.5rem;padding:1.4rem 1.5rem;background:linear-gradient(135deg,rgba(59,130,246,0.08) 0%,var(--gray2) 100%);border:1px solid var(--border);border-radius:10px;min-height:120px;transition:border-color 0.3s;}
+  .plait-result.danger{border-color:rgba(239,68,68,0.4);background:linear-gradient(135deg,rgba(239,68,68,0.08) 0%,var(--gray2) 100%);}
+  .plait-result.warning{border-color:rgba(245,158,11,0.4);background:linear-gradient(135deg,rgba(245,158,11,0.08) 0%,var(--gray2) 100%);}
+  .plait-result.success{border-color:rgba(16,185,129,0.4);background:linear-gradient(135deg,rgba(16,185,129,0.1) 0%,var(--gray2) 100%);}
+  .plait-result-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--accent-soft);margin-bottom:0.6rem;}
+  .plait-result.danger .plait-result-label{color:#fca5a5;}
+  .plait-result.warning .plait-result-label{color:#fcd34d;}
+  .plait-result.success .plait-result-label{color:#6ee7b7;}
+  .plait-result-headline{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.2rem;text-transform:uppercase;letter-spacing:0.02em;line-height:1.2;color:var(--white);margin-bottom:0.5rem;}
+  .plait-result-text{font-size:0.86rem;color:rgba(255,255,255,0.75);line-height:1.7;}
+
+  .plait-canvas-wrap{display:flex;align-items:center;justify-content:center;height:380px;}
+  .plait-canvas-wrap svg{width:100%;max-width:380px;height:auto;}
+  .plait-strand-svg{transition:opacity 0.5s,stroke 0.5s,stroke-width 0.5s;}
+  .plait-strand-svg.off{opacity:0.12;stroke-dasharray:6 8;}
+  .plait-strand-svg.on{opacity:1;}
+  .plait-node{transition:opacity 0.5s,r 0.4s;}
+  .plait-node.off{opacity:0.15;}
+
   .brand-story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem;}
   .brand-visual{position:relative;height:380px;display:flex;align-items:center;justify-content:center;}
   .brand-visual svg{width:100%;max-width:500px;height:auto;}
@@ -91,7 +136,48 @@
   .brand-conclusion{padding:1.4rem 1.6rem;background:linear-gradient(135deg,rgba(59,130,246,0.08) 0%,var(--gray2) 100%);border:1px solid var(--border);border-radius:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:0.04em;line-height:1.4;color:var(--white);}
   .brand-conclusion span{color:var(--accent-soft);}
 
-  /* PROCESS */
+  /* BRAND PILLARS ROW */
+  .brand-pillars-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
+  .brand-pillars-row .pillar{background:var(--gray2);border:1px solid var(--border2);border-radius:10px;padding:1.6rem;display:flex;gap:1.2rem;align-items:flex-start;transition:border-color 0.2s;}
+  .brand-pillars-row .pillar:hover{border-color:var(--border);}
+  .pillar-icon{width:38px;height:38px;background:var(--accent-glow);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;}
+  .pillar-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-soft);margin-bottom:0.4rem;}
+  .pillar-text{font-size:0.86rem;color:var(--muted);line-height:1.7;}
+  .brand-conclusion{margin-top:2rem;padding:1.4rem 1.6rem;background:linear-gradient(135deg,rgba(59,130,246,0.08) 0%,var(--gray2) 100%);border:1px solid var(--border);border-radius:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:0.04em;line-height:1.4;color:var(--white);text-align:center;}
+  .brand-conclusion span{color:var(--accent-soft);}
+
+  /* ROI CALCULATOR */
+  #roi-calc{background:var(--gray);}
+  .calc-toggle-row{display:flex;gap:1rem;justify-content:center;margin:3rem 0 2rem;flex-wrap:wrap;}
+  .calc-toggle-btn{padding:1rem 2.5rem;background:var(--gray2);border:1px solid var(--border2);color:white;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:0.08em;border-radius:8px;cursor:pointer;transition:all 0.25s;display:flex;flex-direction:column;align-items:center;gap:0.4rem;min-width:200px;}
+  .calc-toggle-btn:hover{border-color:var(--border);}
+  .calc-toggle-btn.active{border-color:var(--accent);background:linear-gradient(135deg,rgba(59,130,246,0.12) 0%,var(--gray2) 100%);}
+  .calc-toggle-icon{font-size:1.6rem;}
+  .calc-toggle-label{font-size:0.95rem;}
+  .calc-toggle-desc{font-size:0.7rem;color:var(--muted);font-weight:500;letter-spacing:0.04em;}
+  .calc-card{background:var(--gray2);border:1px solid var(--border2);border-radius:14px;padding:2.5rem;display:none;}
+  .calc-card.show{display:block;animation:fadeUp 0.4s ease;}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+  .calc-inputs{display:flex;flex-direction:column;gap:1.2rem;}
+  .calc-input-row{display:flex;flex-direction:column;}
+  .calc-input-label{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
+  .calc-input-wrap{position:relative;display:flex;align-items:center;}
+  .calc-input-prefix{position:absolute;left:1rem;color:var(--muted);font-weight:600;font-size:1rem;pointer-events:none;}
+  .calc-input-suffix{position:absolute;right:1rem;color:var(--muted);font-weight:600;font-size:0.85rem;pointer-events:none;}
+  .calc-input{background:var(--black);border:1px solid var(--border2);border-radius:6px;padding:0.85rem 1rem 0.85rem 2.2rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:1rem;font-weight:600;width:100%;transition:border-color 0.2s;}
+  .calc-input.no-prefix{padding-left:1rem;}
+  .calc-input:focus{outline:none;border-color:var(--accent);}
+  .calc-results{background:linear-gradient(135deg,rgba(59,130,246,0.08) 0%,var(--black) 100%);border:1px solid var(--border);border-radius:10px;padding:2rem;display:flex;flex-direction:column;gap:1.3rem;}
+  .calc-result-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--accent-soft);margin-bottom:0.3rem;}
+  .calc-result-row{display:flex;flex-direction:column;padding-bottom:1rem;border-bottom:1px solid var(--border2);}
+  .calc-result-row:last-child{border-bottom:none;padding-bottom:0;}
+  .calc-result-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.4rem;color:var(--white);line-height:1;letter-spacing:0.02em;}
+  .calc-result-num.lift{color:#6ee7b7;}
+  .calc-result-detail{font-size:0.78rem;color:var(--muted);margin-top:0.4rem;}
+  .calc-disclaimer{font-size:0.74rem;color:var(--muted);font-style:italic;margin-top:1.5rem;text-align:center;line-height:1.6;}
+
+  /* COUNT-UP NUMBERS */
+  .count-up{display:inline-block;}
   #process{background:var(--black);}
   .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:4rem;}
   .flip-card{perspective:1200px;height:280px;}
@@ -198,15 +284,22 @@
   .fade-up{opacity:0;animation:fadeUp 0.65s ease forwards;}
   .delay-1{animation-delay:0.1s;}.delay-2{animation-delay:0.25s;}.delay-3{animation-delay:0.4s;}.delay-4{animation-delay:0.55s;}
 
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
   @media (max-width:900px){
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(8,11,18,0.98);flex-direction:column;align-items:flex-start;padding:1.5rem 5%;gap:1.2rem;border-bottom:1px solid var(--border);}
     .nav-links.open{display:flex;}
     .nav-toggle{display:block;}
     .process-grid,.case-snippet-grid,.packages-grid{grid-template-columns:1fr;}
-    .orbit-inner,.brand-story-grid{grid-template-columns:1fr;gap:3rem;}
+    .orbit-inner,.brand-story-grid,.plait-interactive,.calc-grid{grid-template-columns:1fr;gap:2rem;}
+    .brand-pillars-row{grid-template-columns:1fr;}
     .orbit-features{grid-template-columns:1fr;}
     .carousel-card{flex:0 0 100%;}
     .hero-stats{gap:2rem;}
+    .calc-card{padding:1.5rem;}
+    .plait-interactive{padding:1.5rem;}
   }
 </style>
 </head>
@@ -227,6 +320,20 @@
 <section id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
+  <div class="rope-wrap">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <g class="rope-glow">
+        <!-- Three woven strands flowing horizontally -->
+        <path class="rope-strand s1" stroke-dasharray="80 320" d="M -100 200 Q 100 100, 300 200 T 700 200 T 1100 200 T 1500 200 T 1900 200"/>
+        <path class="rope-strand s2" stroke-dasharray="80 320" d="M -100 200 Q 100 300, 300 200 T 700 200 T 1100 200 T 1500 200 T 1900 200"/>
+        <path class="rope-strand s3" stroke-dasharray="80 320" d="M -100 200 L 1900 200"/>
+
+        <path class="rope-strand s1" stroke-dasharray="80 320" d="M -100 720 Q 100 620, 300 720 T 700 720 T 1100 720 T 1500 720 T 1900 720"/>
+        <path class="rope-strand s2" stroke-dasharray="80 320" d="M -100 720 Q 100 820, 300 720 T 700 720 T 1100 720 T 1500 720 T 1900 720"/>
+        <path class="rope-strand s3" stroke-dasharray="80 320" d="M -100 720 L 1900 720"/>
+      </g>
+    </svg>
+  </div>
   <div class="money-explosion" id="moneyExplosion"></div>
   <div class="hero-label fade-up">Human strategy. AI velocity.</div>
   <h1 class="hero-headline fade-up delay-1">
@@ -239,9 +346,9 @@
     <a href="services.html" class="btn-secondary">Explore Services</a>
   </div>
   <div class="hero-stats fade-up delay-4">
-    <div class="hero-stat"><div class="hero-stat-num">$2M<span>+</span></div><div class="hero-stat-label">Revenue Produced</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">80<span>+</span></div><div class="hero-stat-label">Brands Scaled</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">11<span>+</span></div><div class="hero-stat-label">Channels to Capture Demand</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$<span class="count-up" data-target="2" data-suffix="">0</span><span>M+</span></div><div class="hero-stat-label">Revenue Produced</div></div>
+    <div class="hero-stat"><div class="hero-stat-num"><span class="count-up" data-target="80" data-suffix="">0</span><span>+</span></div><div class="hero-stat-label">Brands Scaled</div></div>
+    <div class="hero-stat"><div class="hero-stat-num"><span class="count-up" data-target="11" data-suffix="">0</span><span>+</span></div><div class="hero-stat-label">Channels to Capture Demand</div></div>
   </div>
 </section>
 
@@ -278,43 +385,209 @@
     <div class="brand-def-type">noun</div>
     <div class="brand-def-meaning">A single length formed by intertwining three or more strands together. Stronger, more flexible, and more resistant to unraveling than any single strand alone.</div>
   </div>
-  <div class="brand-story-grid">
-    <div class="brand-visual">
-      <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <g>
-          <text x="105" y="30" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Barlow Condensed" font-weight="700" font-size="14" letter-spacing="2">ALONE</text>
-          <path class="strand s1" d="M 60 60 Q 65 120, 55 180 Q 70 240, 60 320" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
-          <text x="60" y="345" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="1.5">ADS</text>
-          <path class="strand s2" d="M 105 60 Q 100 130, 110 190 Q 95 250, 105 320" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
-          <text x="105" y="345" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="1.5">SITE</text>
-          <path class="strand s3" d="M 150 60 Q 155 120, 145 180 Q 160 250, 150 320" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
-          <text x="150" y="345" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Barlow Condensed" font-weight="700" font-size="11" letter-spacing="1.5">ATTRIBUTION</text>
-        </g>
-        <g>
-          <line x1="200" y1="190" x2="290" y2="190" stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
-          <polygon points="285,184 295,190 285,196" fill="#60A5FA" opacity="0.7"/>
-        </g>
-        <g>
-          <text x="385" y="30" text-anchor="middle" fill="#60A5FA" font-family="Barlow Condensed" font-weight="700" font-size="14" letter-spacing="2">WOVEN</text>
-          <path class="strand s4" d="M 350 60 Q 420 90, 350 130 Q 420 170, 350 210 Q 420 250, 350 290 Q 420 320, 350 320" stroke="#3B82F6" stroke-width="4" stroke-linecap="round"/>
-          <path class="strand s5" d="M 420 60 Q 350 90, 420 130 Q 350 170, 420 210 Q 350 250, 420 290 Q 350 320, 420 320" stroke="#06B6D4" stroke-width="4" stroke-linecap="round"/>
-          <path class="strand s6" d="M 385 60 L 385 320" stroke="#60A5FA" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
-          <circle cx="385" cy="100" r="5" fill="#60A5FA"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/></circle>
-          <circle cx="385" cy="180" r="5" fill="#06B6D4"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
-          <circle cx="385" cy="260" r="5" fill="#3B82F6"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
-          <text x="385" y="345" text-anchor="middle" fill="#60A5FA" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="1.5">ONE SYSTEM</text>
-        </g>
+  <div class="plait-interactive">
+    <div class="plait-controls-wrap">
+      <div>
+        <div class="plait-controls-title">Toggle the strands</div>
+        <div class="plait-controls-sub">See what happens when one (or more) of your channels falls out of sync. Three strands working together is the only way the system holds.</div>
+      </div>
+      <div class="plait-toggles">
+        <div class="plait-toggle active" data-strand="ads" onclick="toggleStrand('ads')">
+          <div class="plait-toggle-switch"></div>
+          <div class="plait-toggle-icon">📡</div>
+          <div class="plait-toggle-label">Ads</div>
+        </div>
+        <div class="plait-toggle active" data-strand="site" onclick="toggleStrand('site')">
+          <div class="plait-toggle-switch"></div>
+          <div class="plait-toggle-icon">🖥️</div>
+          <div class="plait-toggle-label">Website</div>
+        </div>
+        <div class="plait-toggle active" data-strand="attribution" onclick="toggleStrand('attribution')">
+          <div class="plait-toggle-switch"></div>
+          <div class="plait-toggle-icon">📊</div>
+          <div class="plait-toggle-label">Attribution</div>
+        </div>
+      </div>
+      <div class="plait-result success" id="plaitResult">
+        <div class="plait-result-label" id="plaitResultLabel">All Three Connected</div>
+        <div class="plait-result-headline" id="plaitResultHeadline">One System. Compounding Returns.</div>
+        <div class="plait-result-text" id="plaitResultText">When all three strands work together, your messaging carries from ad to site to follow-up, attribution shows you what's working, and every campaign sharpens the next. This is what scales.</div>
+      </div>
+    </div>
+
+    <div class="plait-canvas-wrap">
+      <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- Strand 1: Ads (left wave) -->
+        <path id="strand-ads" class="plait-strand-svg on" d="M 110 40 Q 220 80, 110 130 Q 220 180, 110 230 Q 220 280, 110 340" stroke="#3B82F6" stroke-width="6" stroke-linecap="round"/>
+        <!-- Strand 2: Site (right wave) -->
+        <path id="strand-site" class="plait-strand-svg on" d="M 270 40 Q 160 80, 270 130 Q 160 180, 270 230 Q 160 280, 270 340" stroke="#06B6D4" stroke-width="6" stroke-linecap="round"/>
+        <!-- Strand 3: Attribution (center) -->
+        <path id="strand-attribution" class="plait-strand-svg on" d="M 190 40 L 190 340" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+
+        <!-- Connection nodes -->
+        <circle id="node-1" class="plait-node" cx="190" cy="100" r="6" fill="#60A5FA"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/></circle>
+        <circle id="node-2" class="plait-node" cx="190" cy="180" r="6" fill="#06B6D4"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
+        <circle id="node-3" class="plait-node" cx="190" cy="260" r="6" fill="#3B82F6"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+
+        <!-- Labels -->
+        <text x="110" y="20" text-anchor="middle" fill="#3B82F6" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">ADS</text>
+        <text x="190" y="20" text-anchor="middle" fill="#60A5FA" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">ATTRIBUTION</text>
+        <text x="270" y="20" text-anchor="middle" fill="#06B6D4" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">SITE</text>
       </svg>
     </div>
-    <div class="brand-content">
-      <div class="brand-pillars">
-        <div class="pillar"><div class="pillar-icon">⚡</div><div><div class="pillar-title">Communication</div><div class="pillar-text">Your ads speak the same language as your landing pages. Your messaging carries from the first impression to the final conversion.</div></div></div>
-        <div class="pillar"><div class="pillar-icon">🎯</div><div><div class="pillar-title">Clarity</div><div class="pillar-text">Attribution that actually tells the story. You see what's working, what isn't, and what to do next, in plain language.</div></div></div>
-        <div class="pillar"><div class="pillar-icon">🔗</div><div><div class="pillar-title">One System</div><div class="pillar-text">Ads, website, and attribution working together instead of separately. When one strand learns, the others get sharper.</div></div></div>
+  </div>
+
+  <div class="brand-pillars-row">
+    <div class="pillar"><div class="pillar-icon">⚡</div><div><div class="pillar-title">Communication</div><div class="pillar-text">Your ads speak the same language as your landing pages. Your messaging carries from the first impression to the final conversion.</div></div></div>
+    <div class="pillar"><div class="pillar-icon">🎯</div><div><div class="pillar-title">Clarity</div><div class="pillar-text">Attribution that actually tells the story. You see what's working, what isn't, and what to do next, in plain language.</div></div></div>
+    <div class="pillar"><div class="pillar-icon">🔗</div><div><div class="pillar-title">One System</div><div class="pillar-text">Ads, website, and attribution working together instead of separately. When one strand learns, the others get sharper.</div></div></div>
+  </div>
+  <div class="brand-conclusion">That's what happens when your <span>ads, website, and attribution</span> stop operating in isolation and start operating as one.</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROI CALCULATOR -->
+<section id="roi-calc">
+  <div class="section-label">See The Math</div>
+  <h2 class="section-title">What could a tighter<br>system unlock for you?</h2>
+  <p class="section-sub">A quick estimate of what optimization could mean for your business. Drop in your numbers and see the math.</p>
+
+  <div class="calc-toggle-row">
+    <button class="calc-toggle-btn active" id="btn-d2c" onclick="switchCalc('d2c')">
+      <span class="calc-toggle-icon">🛒</span>
+      <span class="calc-toggle-label">D2C / E-Commerce</span>
+      <span class="calc-toggle-desc">Product-based revenue</span>
+    </button>
+    <button class="calc-toggle-btn" id="btn-saas" onclick="switchCalc('saas')">
+      <span class="calc-toggle-icon">💻</span>
+      <span class="calc-toggle-label">SaaS / Subscription</span>
+      <span class="calc-toggle-desc">Recurring revenue</span>
+    </button>
+  </div>
+
+  <!-- D2C CALCULATOR -->
+  <div class="calc-card show" id="calc-d2c">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-input-row">
+          <div class="calc-input-label">Monthly Ad Spend</div>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input type="number" class="calc-input" id="d2c-spend" value="10000" oninput="calcD2C()">
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Current ROAS</div>
+          <div class="calc-input-wrap">
+            <input type="number" step="0.1" class="calc-input no-prefix" id="d2c-roas" value="2.5" oninput="calcD2C()">
+            <span class="calc-input-suffix">x</span>
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Average Order Value</div>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input type="number" class="calc-input" id="d2c-aov" value="65" oninput="calcD2C()">
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Current CAC</div>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input type="number" class="calc-input" id="d2c-cac" value="35" oninput="calcD2C()">
+          </div>
+        </div>
       </div>
-      <div class="brand-conclusion">That's what happens when your <span>ads, website, and attribution</span> stop operating in isolation and start operating as one.</div>
+
+      <div class="calc-results">
+        <div class="calc-result-label">Current Performance</div>
+        <div class="calc-result-row">
+          <div class="calc-result-num">$<span id="d2c-current-rev">25,000</span></div>
+          <div class="calc-result-detail">Monthly revenue at current ROAS</div>
+        </div>
+
+        <div class="calc-result-label" style="margin-top:0.5rem;">With Optimization (Conservative 25% ROAS Lift)</div>
+        <div class="calc-result-row">
+          <div class="calc-result-num lift">$<span id="d2c-new-rev">31,250</span></div>
+          <div class="calc-result-detail">Projected monthly revenue</div>
+        </div>
+        <div class="calc-result-row">
+          <div class="calc-result-num lift">+$<span id="d2c-monthly-lift">6,250</span><span style="font-size:1rem;color:var(--muted);">/mo</span></div>
+          <div class="calc-result-detail">Additional revenue per month</div>
+        </div>
+        <div class="calc-result-row">
+          <div class="calc-result-num lift">+$<span id="d2c-yearly-lift">75,000</span><span style="font-size:1rem;color:var(--muted);">/yr</span></div>
+          <div class="calc-result-detail">Additional revenue per year</div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- SAAS CALCULATOR -->
+  <div class="calc-card" id="calc-saas">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-input-row">
+          <div class="calc-input-label">Monthly Ad Spend</div>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input type="number" class="calc-input" id="saas-spend" value="15000" oninput="calcSaas()">
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Current CAC</div>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input type="number" class="calc-input" id="saas-cac" value="180" oninput="calcSaas()">
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Average Subscription Price</div>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input type="number" class="calc-input" id="saas-arpu" value="49" oninput="calcSaas()">
+            <span class="calc-input-suffix">/ mo</span>
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Average Monthly Churn</div>
+          <div class="calc-input-wrap">
+            <input type="number" step="0.1" class="calc-input no-prefix" id="saas-churn" value="5" oninput="calcSaas()">
+            <span class="calc-input-suffix">%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="calc-result-label">Current Performance</div>
+        <div class="calc-result-row">
+          <div class="calc-result-num"><span id="saas-current-customers">83</span></div>
+          <div class="calc-result-detail">New customers per month</div>
+        </div>
+        <div class="calc-result-row">
+          <div class="calc-result-num">$<span id="saas-current-ltv">980</span></div>
+          <div class="calc-result-detail">Lifetime value per customer (current)</div>
+        </div>
+
+        <div class="calc-result-label" style="margin-top:0.5rem;">With 40% CAC Reduction</div>
+        <div class="calc-result-row">
+          <div class="calc-result-num lift">$<span id="saas-new-cac">108</span></div>
+          <div class="calc-result-detail">New CAC after optimization</div>
+        </div>
+        <div class="calc-result-row">
+          <div class="calc-result-num lift"><span id="saas-new-customers">139</span></div>
+          <div class="calc-result-detail">New customers per month (+<span id="saas-customer-delta">56</span>)</div>
+        </div>
+        <div class="calc-result-row">
+          <div class="calc-result-num lift">+$<span id="saas-mrr-lift">2,744</span><span style="font-size:1rem;color:var(--muted);">/mo MRR</span></div>
+          <div class="calc-result-detail">Additional recurring revenue per month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-disclaimer">These are estimates based on real client outcomes. Your results depend on your specific business, market, and current setup. The math is yours to verify.</div>
 </section>
 
 <div class="divider"></div>
@@ -366,9 +639,9 @@
   <h2 class="section-title">Real systems.<br>Real results.</h2>
   <p class="section-sub">A glimpse at what's possible. Each story is a snapshot of strategy, execution, and outcome.</p>
   <div class="case-snippet-grid">
-    <div class="case-snippet-card"><div class="case-snippet-tag">SaaS · Account Restructure</div><div class="case-snippet-name">Extern</div><div class="case-snippet-text">Consolidated fragmented campaigns into a unified evergreen system that compounded results fast.</div><div class="case-snippet-result">90% CAC Reduction</div></div>
-    <div class="case-snippet-card"><div class="case-snippet-tag">Mobile App · Acquisition & CRO</div><div class="case-snippet-name">Ivy Dating</div><div class="case-snippet-text">Lean paid campaigns paired with CRO work, refining onboarding to lift retention.</div><div class="case-snippet-result">345% Active User Jump</div></div>
-    <div class="case-snippet-card"><div class="case-snippet-tag">Enterprise · Awareness at Scale</div><div class="case-snippet-name">Airia</div><div class="case-snippet-text">AI platform partnered with Williams F1. Strategic paid media + creative velocity.</div><div class="case-snippet-result">30M+ Reached</div></div>
+    <div class="case-snippet-card"><div class="case-snippet-tag">SaaS · Account Restructure</div><div class="case-snippet-name">Extern</div><div class="case-snippet-text">Consolidated fragmented campaigns into a unified evergreen system that compounded results fast.</div><div class="case-snippet-result"><span class="count-up" data-target="90" data-suffix="%">0%</span> CAC Reduction</div></div>
+    <div class="case-snippet-card"><div class="case-snippet-tag">Mobile App · Acquisition & CRO</div><div class="case-snippet-name">Ivy Dating</div><div class="case-snippet-text">Lean paid campaigns paired with CRO work, refining onboarding to lift retention.</div><div class="case-snippet-result"><span class="count-up" data-target="345" data-suffix="%">0%</span> Active User Jump</div></div>
+    <div class="case-snippet-card"><div class="case-snippet-tag">Enterprise · Awareness at Scale</div><div class="case-snippet-name">Airia</div><div class="case-snippet-text">AI platform partnered with Williams F1. Strategic paid media + creative velocity.</div><div class="case-snippet-result"><span class="count-up" data-target="30" data-suffix="M+">0</span> Reached</div></div>
   </div>
   <div class="case-snippet-cta"><a href="case-studies.html" class="btn-primary">View All Case Studies</a></div>
 </section>
@@ -550,6 +823,145 @@
   document.querySelectorAll('.flip-card').forEach(card => {
     card.addEventListener('click', () => card.classList.toggle('flipped'));
   });
+
+  // ============ COUNT UP ANIMATION ============
+  function animateCount(el) {
+    if (el.dataset.animated) return;
+    el.dataset.animated = "1";
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      let display;
+      if (target >= 100) display = Math.round(current);
+      else if (target >= 10) display = current.toFixed(0);
+      else display = current.toFixed(target % 1 === 0 ? 0 : 1);
+      el.textContent = display + (progress === 1 ? suffix : suffix);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) animateCount(entry.target);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.count-up').forEach(el => countObserver.observe(el));
+
+  // ============ INTERACTIVE PLAIT ============
+  const plaitState = { ads: true, site: true, attribution: true };
+  const plaitScenarios = {
+    '111': { class: 'success', label: 'All Three Connected', headline: 'One System. Compounding Returns.', text: 'When all three strands work together, your messaging carries from ad to site to follow-up, attribution shows you what\'s working, and every campaign sharpens the next. This is what scales.' },
+    '110': { class: 'warning', label: 'Missing Attribution', headline: 'Sales without insight.', text: 'Your ads and site are aligned, but you can\'t tell what\'s actually driving conversions. You may get sales, but you won\'t know from where, why, or how to scale them.' },
+    '101': { class: 'warning', label: 'Missing Website Continuity', headline: 'Ads land on a dead end.', text: 'You\'re running ads with attribution, but the site experience doesn\'t match the message. Cold traffic bounces. Warm traffic gets confused. You\'re paying to send people to a leaky funnel.' },
+    '011': { class: 'warning', label: 'Missing Acquisition', headline: 'A great machine. No fuel.', text: 'You have a converting site and clean attribution, but no traffic flowing in. The system is ready, but it\'s starving. You need acquisition to make any of it matter.' },
+    '100': { class: 'danger', label: 'Ads Only', headline: 'Pouring money into a void.', text: 'Running ads without a site that converts or attribution to track them is the most expensive mistake in marketing. You\'re spending without knowing if it works or fixing what doesn\'t.' },
+    '010': { class: 'danger', label: 'Website Only', headline: 'A storefront with no door.', text: 'A converting website with no traffic and no measurement is just a brochure. No one\'s coming, and even if they did, you\'d never know how they got there.' },
+    '001': { class: 'danger', label: 'Attribution Only', headline: 'Tracking nothing.', text: 'Clean tracking and reporting are powerful, but only when there\'s actual activity to track. Without ads driving traffic and a site converting it, you\'re measuring silence.' },
+    '000': { class: 'danger', label: 'Nothing Connected', headline: 'No system. No revenue.', text: 'Without any of the three strands working, there is no acquisition system. This is where most businesses start. The good news? It\'s where the biggest gains are.' }
+  };
+
+  function toggleStrand(strand) {
+    plaitState[strand] = !plaitState[strand];
+    const toggle = document.querySelector(`[data-strand="${strand}"]`);
+    toggle.classList.toggle('active', plaitState[strand]);
+
+    // Update SVG strands
+    ['ads', 'site', 'attribution'].forEach(s => {
+      const el = document.getElementById(`strand-${s}`);
+      el.classList.toggle('on', plaitState[s]);
+      el.classList.toggle('off', !plaitState[s]);
+    });
+
+    // Update connection nodes (only show when all 3 are on)
+    const allOn = plaitState.ads && plaitState.site && plaitState.attribution;
+    ['node-1','node-2','node-3'].forEach(id => {
+      document.getElementById(id).classList.toggle('off', !allOn);
+    });
+
+    // Update result
+    const key = (plaitState.ads ? '1' : '0') + (plaitState.site ? '1' : '0') + (plaitState.attribution ? '1' : '0');
+    const scenario = plaitScenarios[key];
+    const resultEl = document.getElementById('plaitResult');
+    resultEl.className = 'plait-result ' + scenario.class;
+    document.getElementById('plaitResultLabel').textContent = scenario.label;
+    document.getElementById('plaitResultHeadline').textContent = scenario.headline;
+    document.getElementById('plaitResultText').textContent = scenario.text;
+  }
+
+  // ============ ROI CALCULATORS ============
+  function fmt(n) { return Math.round(n).toLocaleString(); }
+
+  function switchCalc(type) {
+    document.getElementById('btn-d2c').classList.toggle('active', type === 'd2c');
+    document.getElementById('btn-saas').classList.toggle('active', type === 'saas');
+    document.getElementById('calc-d2c').classList.toggle('show', type === 'd2c');
+    document.getElementById('calc-saas').classList.toggle('show', type === 'saas');
+  }
+
+  function calcD2C() {
+    const spend = parseFloat(document.getElementById('d2c-spend').value) || 0;
+    const roas = parseFloat(document.getElementById('d2c-roas').value) || 0;
+    const aov = parseFloat(document.getElementById('d2c-aov').value) || 0;
+    const cac = parseFloat(document.getElementById('d2c-cac').value) || 0;
+
+    const currentRev = spend * roas;
+    const newRoas = roas * 1.25; // 25% lift
+    const newRev = spend * newRoas;
+    const monthlyLift = newRev - currentRev;
+    const yearlyLift = monthlyLift * 12;
+
+    document.getElementById('d2c-current-rev').textContent = fmt(currentRev);
+    document.getElementById('d2c-new-rev').textContent = fmt(newRev);
+    document.getElementById('d2c-monthly-lift').textContent = fmt(monthlyLift);
+    document.getElementById('d2c-yearly-lift').textContent = fmt(yearlyLift);
+  }
+
+  function calcSaas() {
+    const spend = parseFloat(document.getElementById('saas-spend').value) || 0;
+    const cac = parseFloat(document.getElementById('saas-cac').value) || 0;
+    const arpu = parseFloat(document.getElementById('saas-arpu').value) || 0;
+    const churn = parseFloat(document.getElementById('saas-churn').value) || 1;
+
+    const currentCustomers = cac > 0 ? spend / cac : 0;
+    const ltv = churn > 0 ? arpu / (churn / 100) : 0;
+
+    const newCac = cac * 0.6; // 40% reduction
+    const newCustomers = newCac > 0 ? spend / newCac : 0;
+    const customerDelta = newCustomers - currentCustomers;
+    const mrrLift = customerDelta * arpu;
+
+    document.getElementById('saas-current-customers').textContent = fmt(currentCustomers);
+    document.getElementById('saas-current-ltv').textContent = fmt(ltv);
+    document.getElementById('saas-new-cac').textContent = fmt(newCac);
+    document.getElementById('saas-new-customers').textContent = fmt(newCustomers);
+    document.getElementById('saas-customer-delta').textContent = fmt(customerDelta);
+    document.getElementById('saas-mrr-lift').textContent = fmt(mrrLift);
+  }
+
+  // Initial calc runs
+  calcD2C();
+  calcSaas();
+
+  // ============ SCROLL REVEAL ============
+  const revealTargets = document.querySelectorAll('section .section-title, section .section-sub, .process-grid, .case-snippet-grid, .packages-grid, .calc-card, .plait-interactive, .brand-pillars-row, .orbit-inner, .carousel-wrap');
+  revealTargets.forEach(el => el.classList.add('reveal'));
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealTargets.forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
