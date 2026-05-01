@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies | Plait</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#080b12; --white:#fff; --accent:#3B82F6; --accent-soft:#60A5FA; --accent-glow:rgba(59,130,246,0.15); --accent2:#06B6D4; --gray:#0d1117; --gray2:#131922; --muted:#6b7a99; --border:rgba(59,130,246,0.12); --border2:rgba(255,255,255,0.06); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5%;background:rgba(8,11,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:0.02em;color:var(--white);text-decoration:none;text-transform:lowercase;display:inline-flex;align-items:baseline;}
+  .logo-ai{color:var(--white);animation:flashAI 3s ease-in-out infinite;display:inline-block;}
+  @keyframes flashAI{0%,100%{color:var(--white);}50%{color:var(--accent-soft);}}
+  .logo-dot{color:var(--accent-soft);}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--white);}
+  .nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:0.5rem 1.3rem;border-radius:4px;}
+  .nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer;}
+
+  .page-header{padding:10rem 5% 4rem;position:relative;overflow:hidden;}
+  .page-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 85% 40%,rgba(59,130,246,0.08) 0%,transparent 65%);pointer-events:none;}
+  .page-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;}
+  .page-label{font-size:0.72rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;position:relative;z-index:1;}
+  .page-label::before{content:'';display:inline-block;width:28px;height:1px;background:var(--accent-soft);}
+  .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;letter-spacing:0.02em;text-transform:uppercase;margin-bottom:1.2rem;max-width:800px;position:relative;z-index:1;}
+  .page-sub{color:var(--muted);font-size:1.1rem;line-height:1.7;max-width:620px;position:relative;z-index:1;}
+
+  .cases-section{padding:4rem 5% 7rem;}
+  .case-list{display:flex;flex-direction:column;gap:1.5rem;}
+  .case-row{background:var(--gray2);border:1px solid var(--border2);border-radius:14px;padding:2.5rem;transition:border-color 0.25s;}
+  .case-row:hover{border-color:var(--border);}
+  .case-top{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-bottom:1.5rem;padding-bottom:1.8rem;border-bottom:1px solid var(--border2);}
+  .case-tag{font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:0.8rem;}
+  .case-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;text-transform:uppercase;letter-spacing:0.04em;line-height:1.1;margin-bottom:0.6rem;}
+  .case-headline{font-size:1rem;color:var(--accent-soft);font-weight:500;line-height:1.5;font-style:italic;opacity:0.9;}
+  .case-results-side{display:flex;flex-direction:column;gap:1.2rem;align-items:flex-end;}
+  .case-result-block{text-align:right;}
+  .case-result-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--accent-soft);line-height:1;letter-spacing:0.02em;}
+  .case-result-label{font-size:0.72rem;color:var(--muted);margin-top:0.3rem;letter-spacing:0.06em;font-weight:500;text-transform:uppercase;}
+  .case-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;}
+  .case-block-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-soft);margin-bottom:0.8rem;}
+  .case-block-text{font-size:0.86rem;color:rgba(255,255,255,0.72);line-height:1.75;}
+  .back-cta{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent-soft);font-size:0.85rem;font-weight:600;text-decoration:none;margin-top:3rem;transition:gap 0.2s;}
+  .back-cta:hover{gap:0.7rem;}
+
+  footer{padding:2rem 5%;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:0.02em;text-transform:lowercase;display:inline-flex;align-items:baseline;}
+  .footer-copy{font-size:0.75rem;color:var(--muted);}
+
+  @media (max-width:900px){
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(8,11,18,0.98);flex-direction:column;align-items:flex-start;padding:1.5rem 5%;gap:1.2rem;border-bottom:1px solid var(--border);}
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+    .case-top{grid-template-columns:1fr;gap:1.5rem;}
+    .case-results-side{flex-direction:row;align-items:flex-start;gap:2rem;}
+    .case-result-block{text-align:left;}
+    .case-body{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">pl<span class="logo-ai">ai</span>t<span class="logo-dot">.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="case-studies.html" class="active">Case Studies</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Work With Me</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<header class="page-header">
+  <div class="page-bg"></div>
+  <div class="page-grid-bg"></div>
+  <div class="page-label">Case Studies</div>
+  <h1 class="page-title">The process.<br>The proof.</h1>
+  <p class="page-sub">Every result starts with a system. Here's a deeper look at how I've built, restructured, and scaled acquisition for brands across industries.</p>
+</header>
+
+<section class="cases-section">
+  <div class="case-list">
+
+    <div class="case-row">
+      <div class="case-top">
+        <div>
+          <div class="case-tag">D2C Ecommerce · Full Funnel</div>
+          <div class="case-name">Tsunami Bar Sports</div>
+          <div class="case-headline">Holiday campaign built around education, urgency & timing.</div>
+        </div>
+        <div class="case-results-side">
+          <div class="case-result-block"><div class="case-result-num">Record</div><div class="case-result-label">MoM D2C Revenue</div></div>
+          <div class="case-result-block"><div class="case-result-num">Full Funnel</div><div class="case-result-label">System Deployed</div></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div><div class="case-block-title">Project Overview</div><div class="case-block-text">Tsunami Bar Sports is a D2C sports fitness brand offering a high-ticket product. The challenge wasn't demand, it was clarity. The product required education. Customers needed to understand why it was different, how it worked, and why it justified the investment.</div></div>
+        <div><div class="case-block-title">Project Execution</div><div class="case-block-text">Full-funnel strategy: bottom-funnel retargeting for high-intent users who'd engaged throughout the year, paired with prospecting campaigns to capture new audiences. Creative focused on education and differentiation. Messaging addressed objections.</div></div>
+        <div><div class="case-block-title">Project Results</div><div class="case-block-text">Drove record-high month-over-month performance in the company's D2C department, setting a new revenue benchmark and validating that high-ticket products can scale efficiently when full-funnel strategy, education, and timing are executed in sync.</div></div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-top">
+        <div>
+          <div class="case-tag">SaaS · Account Restructure</div>
+          <div class="case-name">Extern</div>
+          <div class="case-headline">Fragmented account rebuilt into a scalable acquisition engine.</div>
+        </div>
+        <div class="case-results-side">
+          <div class="case-result-block"><div class="case-result-num">90%</div><div class="case-result-label">CAC Reduction</div></div>
+          <div class="case-result-block"><div class="case-result-num">2,383%</div><div class="case-result-label">Trial Signup Increase</div></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div><div class="case-block-title">Project Overview</div><div class="case-block-text">SaaS platform offering externships to college students, one of the most fiscally constrained audiences to sell to. Account had multiple campaigns running across different objectives. Budget was fragmented. Signals were diluted.</div></div>
+        <div><div class="case-block-title">Project Execution</div><div class="case-block-text">Consolidated the account into a unified evergreen purchase-focused framework. Layered interest testing, audience expansion, and creative testing. Built a dedicated bottom-funnel strategy with frequency segmentation for engaged users.</div></div>
+        <div><div class="case-block-title">Project Results</div><div class="case-block-text">Within month one, CAC dropped over 70%. By month two, CAC was down ~90%. Trial signups jumped from 24 to 596, a 2,383% increase. Extern moved from fragmented experimentation to a controlled, scalable free trial engine.</div></div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-top">
+        <div>
+          <div class="case-tag">Mobile App · Acquisition & CRO</div>
+          <div class="case-name">Ivy Dating</div>
+          <div class="case-headline">Downloads driven. Retention rebuilt. Funnel optimized end-to-end.</div>
+        </div>
+        <div class="case-results-side">
+          <div class="case-result-block"><div class="case-result-num">205%</div><div class="case-result-label">App Downloads</div></div>
+          <div class="case-result-block"><div class="case-result-num">345%</div><div class="case-result-label">Active Users Jump</div></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div><div class="case-block-title">Project Overview</div><div class="case-block-text">Ivy is a location-based dating app built around real-world connection, not endless swiping. The platform encourages people to connect in moments that matter, when they're nearby, active, and open to meeting someone new.</div></div>
+        <div><div class="case-block-title">Project Execution</div><div class="case-block-text">Launched lean paid acquisition with carousel ads, statics, and UGC video. Deployed across geo-targeted and broad audiences. Audited the full user journey, refining onboarding, in-app education, notifications, and key prompts.</div></div>
+        <div><div class="case-block-title">Project Results</div><div class="case-block-text">Within two months, paid acquisition drove 1,000+ downloads. Funnel barriers were addressed through copy-led improvements. The result: a more intentional experience that mirrors real dating behavior and supports sustained retention.</div></div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-top">
+        <div>
+          <div class="case-tag">Enterprise · Awareness at Scale</div>
+          <div class="case-name">Airia</div>
+          <div class="case-headline">30M+ reached through creative velocity and media discipline.</div>
+        </div>
+        <div class="case-results-side">
+          <div class="case-result-block"><div class="case-result-num">30M+</div><div class="case-result-label">Total Impressions</div></div>
+          <div class="case-result-block"><div class="case-result-num">89%</div><div class="case-result-label">CPM Reduction</div></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div><div class="case-block-title">Project Overview</div><div class="case-block-text">Airia is a revolutionary AI Agentic Modeling platform, partnered with Williams Racing F1. The mission: massive visibility with qualified enterprise decision-makers in a rapidly accelerating AI market.</div></div>
+        <div><div class="case-block-title">Project Execution</div><div class="case-block-text">Strategic paid media deployment across Google, Meta, and TikTok. Tested 30+ creative variations spanning hooks, creators, messaging angles, and value props. Aggressive bidding experimentation paired with disciplined campaign restructuring.</div></div>
+        <div><div class="case-block-title">Project Results</div><div class="case-block-text">CPM reduced from $1.50 to $0.17 at peak efficiency. 30+ creatives tested. 30M+ total people reached across Google, Meta, and TikTok. By pairing creative velocity with media discipline, awareness was made exponentially more efficient.</div></div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-top">
+        <div>
+          <div class="case-tag">Local Business · Lead Generation</div>
+          <div class="case-name">HG Training</div>
+          <div class="case-headline">Qualified local leads. Tight budget. Zero wasted motion.</div>
+        </div>
+        <div class="case-results-side">
+          <div class="case-result-block"><div class="case-result-num">12.4x</div><div class="case-result-label">Blended Return</div></div>
+          <div class="case-result-block"><div class="case-result-num">$8</div><div class="case-result-label">Cost Per Lead</div></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div><div class="case-block-title">Project Overview</div><div class="case-block-text">Hudson runs a private training business in a 20-mile geographic radius. This wasn't about reach, it was about generating qualified leads inside that radius at a cost that made sense. Budget was tight, no room to "test and hope."</div></div>
+        <div><div class="case-block-title">Project Execution</div><div class="case-block-text">Used Meta's native lead forms to remove friction and capture intent instantly. Funnel was structured to pre-frame the offer, set expectations, and qualify leads before they hit Hudson's inbox. Refined messaging around what parents actually valued.</div></div>
+        <div><div class="case-block-title">Project Results</div><div class="case-block-text">Leads were affordable and qualified. Hudson became a recognizable, trusted name in the local community. Reached maximum client capacity within one month, turning a constrained budget experiment into a predictable acquisition channel.</div></div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-top">
+        <div>
+          <div class="case-tag">Brand Launch · Identity & Content</div>
+          <div class="case-name">BluRevive</div>
+          <div class="case-headline">Full brand foundation built for a competitive wellness market entry.</div>
+        </div>
+        <div class="case-results-side">
+          <div class="case-result-block"><div class="case-result-num">Full</div><div class="case-result-label">Brand System Built</div></div>
+          <div class="case-result-block"><div class="case-result-num">$0</div><div class="case-result-label">Extra Fees / Expenses</div></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div><div class="case-block-title">Project Overview</div><div class="case-block-text">BluRevive is a new methylene blue supplement brand entering a fast-growing but highly scrutinized space. They needed more than visuals, they needed a brand foundation that could build trust and communicate credibility from day one.</div></div>
+        <div><div class="case-block-title">Project Execution</div><div class="case-block-text">Crafted a cohesive visual system, refined positioning, and developed core messaging that balanced scientific credibility with modern performance appeal. Launched foundational content designed to educate, build authority, and generate early traction.</div></div>
+        <div><div class="case-block-title">Project Results</div><div class="case-block-text">A complete brand identity and launch-ready asset suite, visual system, positioning, messaging, and foundational content, delivered without additional fees beyond the engagement. A confident market entry, strategically positioned from day one.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="contact.html" class="back-cta">Like what you see? Get in touch →</a>
+</section>
+
+<footer>
+  <div class="footer-logo">pl<span class="logo-ai">ai</span>t<span class="logo-dot">.</span></div>
+  <div class="footer-copy">© 2026 Plait. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
