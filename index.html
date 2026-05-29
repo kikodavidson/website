@@ -6,7 +6,7 @@
 <title>Plait | Human strategy. AI velocity.</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root { --black:#080b12; --white:#fff; --accent:#3B82F6; --accent-soft:#60A5FA; --accent-glow:rgba(59,130,246,0.15); --accent2:#06B6D4; --gray:#0d1117; --gray2:#131922; --gray3:#1c2533; --muted:#6b7a99; --border:rgba(59,130,246,0.12); --border2:rgba(255,255,255,0.06); }
+  :root { --black:#070708; --white:#fff; --accent:#FF2D7B; --accent-soft:#FF6FA8; --accent-glow:rgba(255,45,123,0.18); --accent2:#C1FF3A; --gray:#0d0d10; --gray2:#131316; --gray3:#1d1d22; --muted:#8a8a92; --border:rgba(255,45,123,0.16); --border2:rgba(255,255,255,0.07); }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
@@ -25,18 +25,18 @@
 
   /* HERO */
   #home{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:10rem 5% 6rem;position:relative;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 85% 40%,rgba(59,130,246,0.1) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 15% 70%,rgba(6,182,212,0.06) 0%,transparent 60%);pointer-events:none;}
-  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 85% 40%,rgba(255,45,123,0.10) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 15% 70%,rgba(193,255,58,0.06) 0%,transparent 60%);pointer-events:none;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,45,123,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,45,123,0.05) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;}
 
   /* FLOWING ROPE */
   .rope-wrap{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
   .rope-wrap svg{width:100%;height:100%;}
   .rope-strand{fill:none;stroke-width:2;stroke-linecap:round;opacity:0.35;}
-  .rope-strand.s1{stroke:#3B82F6;animation:ropeFlow 16s linear infinite;}
-  .rope-strand.s2{stroke:#06B6D4;animation:ropeFlow 16s linear infinite;animation-delay:-5.3s;}
-  .rope-strand.s3{stroke:#60A5FA;animation:ropeFlow 16s linear infinite;animation-delay:-10.6s;}
+  .rope-strand.s1{stroke:#FF2D7B;animation:ropeFlow 16s linear infinite;}
+  .rope-strand.s2{stroke:#C1FF3A;animation:ropeFlow 16s linear infinite;animation-delay:-5.3s;}
+  .rope-strand.s3{stroke:#FF6FA8;animation:ropeFlow 16s linear infinite;animation-delay:-10.6s;}
   @keyframes ropeFlow{from{stroke-dashoffset:0;}to{stroke-dashoffset:-400;}}
-  .rope-glow{filter:drop-shadow(0 0 8px rgba(59,130,246,0.4));}
+  .rope-glow{filter:drop-shadow(0 0 8px rgba(255,45,123,0.45));}
   .money-explosion{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
   .money{position:absolute;font-size:2rem;opacity:0;will-change:transform,opacity;}
   .money.go{animation:moneyBurst 2.8s cubic-bezier(0.2,0.7,0.3,1) forwards;}
@@ -94,7 +94,7 @@
   .plait-toggles{display:flex;flex-direction:column;gap:0.8rem;}
   .plait-toggle{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--black);border:1px solid var(--border2);border-radius:8px;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
   .plait-toggle:hover{border-color:var(--border);}
-  .plait-toggle.active{border-color:var(--accent);background:linear-gradient(135deg,rgba(59,130,246,0.1) 0%,var(--black) 100%);}
+  .plait-toggle.active{border-color:var(--accent);background:linear-gradient(135deg,rgba(255,45,123,0.10) 0%,var(--black) 100%);}
   .plait-toggle-switch{width:44px;height:24px;background:rgba(255,255,255,0.1);border-radius:100px;position:relative;flex-shrink:0;transition:background 0.3s;}
   .plait-toggle-switch::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:var(--muted);border-radius:50%;transition:left 0.3s,background 0.3s;}
   .plait-toggle.active .plait-toggle-switch{background:var(--accent);}
@@ -199,7 +199,7 @@
   #orbit-section{background:var(--gray);position:relative;overflow:hidden;}
   .orbit-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem;}
   .orbit-graphic{position:relative;height:300px;display:flex;align-items:center;justify-content:center;}
-  .orbit-core{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;color:white;letter-spacing:0.04em;text-transform:uppercase;box-shadow:0 0 60px rgba(59,130,246,0.4);position:relative;z-index:2;}
+  .orbit-core{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;color:white;letter-spacing:0.04em;text-transform:uppercase;box-shadow:0 0 60px rgba(255,45,123,0.45);position:relative;z-index:2;}
   .orbit-ring{position:absolute;border:1px solid rgba(59,130,246,0.18);border-radius:50%;}
   .orbit-ring.r1{width:180px;height:180px;animation:orbitSpin 20s linear infinite;}
   .orbit-ring.r2{width:240px;height:240px;animation:orbitSpin 30s linear infinite reverse;}
@@ -301,6 +301,153 @@
     .calc-card{padding:1.5rem;}
     .plait-interactive{padding:1.5rem;}
   }
+
+  /* ===== PLAIT PROCESS (accordion) ===== */
+  #plait-process{background:var(--gray);position:relative;}
+  .process-accordion{margin-top:3rem;display:flex;flex-direction:column;gap:0.8rem;max-width:1100px;}
+  .proc-item{background:var(--gray2);border:1px solid var(--border2);border-radius:10px;overflow:hidden;transition:border-color 0.3s,background 0.3s;}
+  .proc-item[open]{border-color:var(--border);background:linear-gradient(180deg,rgba(255,45,123,0.05) 0%,var(--gray2) 100%);}
+  .proc-item:hover{border-color:var(--border);}
+  .proc-summary{display:flex;align-items:center;gap:1.5rem;padding:1.5rem 1.8rem;cursor:pointer;list-style:none;user-select:none;}
+  .proc-summary::-webkit-details-marker{display:none;}
+  .proc-summary::marker{display:none;}
+  .proc-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.4rem;color:var(--accent-soft);letter-spacing:0.08em;flex-shrink:0;min-width:2.5rem;}
+  .proc-summary-text{flex:1;display:flex;flex-direction:column;gap:0.2rem;}
+  .proc-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;text-transform:uppercase;letter-spacing:0.03em;color:var(--white);}
+  .proc-tagline{font-size:0.88rem;color:var(--muted);font-weight:400;}
+  .proc-icon{font-size:1.6rem;color:var(--accent-soft);font-weight:300;flex-shrink:0;transition:transform 0.3s;width:24px;text-align:center;line-height:1;}
+  .proc-item[open] .proc-icon{transform:rotate(45deg);}
+  .proc-body{padding:0 1.8rem 1.8rem;border-top:1px solid var(--border2);padding-top:1.5rem;animation:procFadeIn 0.35s ease-out;}
+  @keyframes procFadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+  .proc-intro{color:rgba(255,255,255,0.85);line-height:1.75;font-size:0.98rem;margin-bottom:1.3rem;}
+  .proc-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.9rem;}
+  .proc-list li{color:var(--muted);font-size:0.93rem;line-height:1.65;padding-left:1.2rem;position:relative;}
+  .proc-list li::before{content:'';position:absolute;left:0;top:0.65em;width:6px;height:6px;border-radius:50%;background:var(--accent-soft);opacity:0.65;}
+  .proc-list li strong{color:var(--white);font-weight:600;}
+  .process-summary{margin-top:2.5rem;padding:1.5rem 1.8rem;background:var(--gray2);border:1px solid var(--border2);border-left:3px solid var(--accent-soft);border-radius:8px;max-width:1100px;}
+  .process-summary p{color:rgba(255,255,255,0.88);font-size:0.98rem;line-height:1.7;margin:0;}
+  .process-summary strong{color:var(--white);font-weight:600;}
+  @media(max-width:768px){
+    .proc-summary{padding:1.2rem 1.3rem;gap:1rem;}
+    .proc-num{font-size:1.2rem;min-width:2rem;}
+    .proc-name{font-size:1.25rem;}
+    .proc-tagline{font-size:0.82rem;}
+    .proc-body{padding:0 1.3rem 1.3rem;padding-top:1.2rem;}
+    .proc-intro{font-size:0.92rem;}
+    .proc-list li{font-size:0.88rem;}
+  }
+
+
+  /* ===== V2 VISUAL OVERHAUL ===== */
+
+  /* Pure black, less gradient noise */
+  body{background:#070708;}
+  nav{background:rgba(7,7,8,0.92);}
+
+  /* Drop the hard grid; replace with subtle particle dots */
+  .hero-grid{display:none !important;}
+  .hero-bg{background:radial-gradient(ellipse 70% 60% at 90% 30%,rgba(255,45,123,0.18) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(193,255,58,0.06) 0%,transparent 55%);}
+  .hero-stars{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.25) 1px,transparent 1px);background-size:48px 48px;background-position:0 0;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 30%,transparent 90%);pointer-events:none;opacity:0.6;}
+
+  /* Hero copy — bigger and tighter */
+  .hero-label{color:#FF6FA8;}
+  .hero-label::before{background:#FF6FA8;}
+  .hero-headline{font-size:clamp(3rem,7.5vw,6.5rem);line-height:0.95;letter-spacing:-0.01em;}
+  .hero-headline .dynamic-wrap{color:#FF2D7B;}
+  .cursor{background:#FF2D7B;}
+
+  /* Hero stats — bigger, with rule line under (DD.NYC vibe) */
+  .hero-stats{gap:4rem;margin-top:1rem;}
+  .hero-stat{position:relative;}
+  .hero-stat-num{font-size:3.2rem;letter-spacing:-0.01em;}
+  .hero-stat-num span{color:#FF2D7B;}
+  .hero-stat::after{content:'';display:block;width:60px;height:2px;background:rgba(255,255,255,0.18);margin-top:0.6rem;margin-bottom:0.6rem;}
+  .hero-stat-label{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+
+  /* Buttons — pill-shaped, magenta */
+  .btn-primary{background:#FF2D7B;border-radius:100px;padding:1rem 2.2rem;font-weight:700;letter-spacing:0.08em;border:1.5px solid #FF2D7B;transition:all 0.25s;}
+  .btn-primary:hover{background:#FF6FA8;border-color:#FF6FA8;transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,45,123,0.32);}
+  .btn-secondary{border:1.5px solid rgba(255,255,255,0.25);border-radius:100px;padding:1rem 2.2rem;font-weight:700;letter-spacing:0.08em;transition:all 0.25s;}
+  .btn-secondary:hover{border-color:#FF2D7B;color:#FF6FA8;transform:translateY(-2px);}
+  .nav-cta{border-radius:100px !important;padding:0.55rem 1.5rem !important;}
+
+  /* Marquee items — chartreuse hover instead of blue */
+  .marquee-item:hover{color:#C1FF3A;}
+
+  /* Section labels & titles — sharper */
+  .section-label{color:#FF6FA8;}
+  .section-label::before{background:#FF6FA8;}
+  .section-title{font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-0.005em;line-height:1.0;}
+
+  /* ===== PROCESS ACCORDION — two column with visual ===== */
+  .proc-item{background:#0e0e12;border-radius:14px;border:1px solid rgba(255,255,255,0.06);}
+  .proc-item[open]{border-color:rgba(255,45,123,0.35);background:linear-gradient(180deg,rgba(255,45,123,0.06) 0%,#0e0e12 100%);}
+  .proc-num{color:#FF2D7B;font-size:1.6rem;}
+  .proc-name{font-size:1.8rem;}
+  .proc-icon{color:#FF2D7B;font-size:2rem;}
+  .proc-summary{padding:1.7rem 2rem;}
+  .proc-body{padding:0 2rem 2rem;padding-top:1.7rem;}
+  .proc-body-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;}
+  .proc-item:nth-of-type(even) .proc-body-grid{grid-template-columns:1fr 1.2fr;}
+  .proc-item:nth-of-type(even) .proc-text{order:2;}
+  .proc-item:nth-of-type(even) .proc-visual{order:1;}
+  .proc-text .proc-intro{font-size:1.05rem;color:rgba(255,255,255,0.9);}
+  .proc-list li::before{background:#FF2D7B;opacity:0.9;width:5px;height:5px;top:0.7em;}
+  .proc-visual{display:flex;align-items:center;justify-content:center;padding:1rem;}
+  .proc-svg{width:100%;max-width:340px;height:auto;}
+  @media(max-width:900px){
+    .proc-body-grid{grid-template-columns:1fr !important;gap:1.5rem;}
+    .proc-item:nth-of-type(even) .proc-text{order:1;}
+    .proc-item:nth-of-type(even) .proc-visual{order:2;}
+    .proc-svg{max-width:240px;}
+  }
+
+  /* Process summary card */
+  .process-summary{border-left:3px solid #FF2D7B;background:#0e0e12;}
+
+  /* Plait result colors */
+  .plait-toggle.active{background:linear-gradient(135deg,rgba(255,45,123,0.12) 0%,#070708 100%);border-color:#FF2D7B;}
+  .plait-toggle.active .plait-toggle-switch{background:#FF2D7B;}
+  .plait-result.success{border-left-color:#FF2D7B;}
+
+  /* Brand pillars + brand definition */
+  .brand-definition-bar{border-left-color:#FF2D7B;}
+  .brand-def-pron, .brand-def-type{color:#FF6FA8;}
+
+  /* Orbit section */
+  .orbit-badge{background:rgba(255,45,123,0.12);color:#FF6FA8;border:1px solid rgba(255,45,123,0.3);border-radius:100px;padding:0.55rem 1.2rem;}
+  .orbit-link{color:#FF6FA8;}
+  .orbit-feature-title{color:#FF2D7B;}
+  .orbit-core{background:linear-gradient(135deg,#FF2D7B 0%,#FF6FA8 100%);}
+
+  /* Case snippet cards — bigger stat */
+  .case-snippet-result{font-size:2.2rem;color:#FF2D7B;}
+  .case-snippet-card{border-radius:14px;}
+
+  /* Packages */
+  .package-card{border-radius:14px;}
+  .package-card.featured{border-color:#FF2D7B;}
+  .package-badge{background:#FF2D7B;border-radius:100px;}
+  .package-price{color:#C1FF3A;}
+  .cta-accent{background:#FF2D7B;border-radius:100px !important;}
+  .cta-outline{border-radius:100px !important;}
+  .cta-outline:hover{border-color:#FF2D7B;color:#FF6FA8;}
+
+  /* Testimonials */
+  .carousel-quote{color:#FF2D7B;}
+  .carousel-avatar{background:#FF2D7B;}
+  .carousel-arrow:hover{border-color:#FF2D7B;color:#FF6FA8;}
+  .carousel-dot.active{background:#FF2D7B;}
+
+  /* Nav links — magenta hover */
+  .nav-links a:hover,.nav-links a.active{color:#FF6FA8;}
+  .logo-ai{animation:flashAI 3s ease-in-out infinite;}
+  @keyframes flashAI{0%,100%{color:#fff;}50%{color:#FF6FA8;}}
+  .logo-dot{color:#FF2D7B;}
+
+  /* Dividers softer */
+  .divider{background:rgba(255,255,255,0.05);}
+
 </style>
 </head>
 <body>
@@ -319,7 +466,7 @@
 
 <section id="home">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-stars"></div>
   <div class="rope-wrap">
     <svg viewBox="0 0 1600 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <g class="rope-glow">
@@ -335,12 +482,12 @@
     </svg>
   </div>
   <div class="money-explosion" id="moneyExplosion"></div>
-  <div class="hero-label fade-up">Human strategy. AI velocity.</div>
+  <div class="hero-label fade-up">Growth Partner — Human Strategy + AI Velocity</div>
   <h1 class="hero-headline fade-up delay-1">
-    <span class="static">Your Brand's Solution For</span>
+    <span class="static">Brands built to</span>
     <span class="dynamic-wrap"><span id="dynamic-text"></span><span class="cursor"></span></span>
   </h1>
-  <p class="hero-tagline fade-up delay-2">Proven growth systems, fused with AI innovation. I build acquisition systems that convert traffic into customers, combining <strong>battle-tested strategy</strong> with <strong>Orbit</strong>, the AI agent I co-founded.</p>
+  <p class="hero-tagline fade-up delay-2">I'm Luke. <strong>Growth partner</strong>, not just an ads guy. I look at your entire funnel — messaging, creative, offers, CRO, the site itself — and use paid acquisition to fuel it. Every agency right now is feeding the same three LLMs the same prompts and wondering why their work all sounds identical. <strong>AI handles the volume. Strategy stays human.</strong></p>
   <div class="hero-ctas fade-up delay-3">
     <a href="contact.html" class="btn-primary">Work With Me</a>
     <a href="services.html" class="btn-secondary">Explore Services</a>
@@ -376,10 +523,280 @@
 
 <div class="divider"></div>
 
+<section id="plait-process">
+  <div class="section-label">The Plait Process</div>
+  <h2 class="section-title">Six strands.<br>One funnel that holds.</h2>
+  <p class="section-sub">A funnel breaks where it isn't connected. Messaging that doesn't match the creative. Hooks that don't match the offer. A site that betrays the ad. Most agencies tighten one or two strands and call it a day. I look at all six.</p>
+
+  <div class="process-accordion">
+
+    <details class="proc-item" open>
+      <summary class="proc-summary">
+        <span class="proc-num">01</span>
+        <div class="proc-summary-text">
+          <span class="proc-name">Messaging</span>
+          <span class="proc-tagline">What you actually say to people</span>
+        </div>
+        <span class="proc-icon">+</span>
+      </summary>
+      <div class="proc-body">
+        <div class="proc-body-grid">
+          <div class="proc-text">
+            <p class="proc-intro">Most copy you've read online this year was written by a robot, or by someone using a robot. Yours won't be. Real messaging starts with what someone actually wants — and what they secretly want to be told.</p>
+        <ul class="proc-list">
+          <li><strong>Unique value propositions.</strong> The things only you can claim. We sharpen them until copying you would feel obvious.</li>
+          <li><strong>Secondary and tertiary benefits.</strong> The buying reasons people don't admit out loud. This is where most brands leave money on the table.</li>
+          <li><strong>Non-obvious connection points.</strong> The cultural moment, the rival product, the thing in their feed yesterday. Context is most of the message.</li>
+        </ul>
+          </div>
+          <div class="proc-visual"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" class="proc-svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="msg-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF2D7B" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FF6FA8" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect x="30" y="30" width="180" height="56" rx="28" fill="url(#msg-grad)" opacity="0.95"/>
+  <text x="120" y="65" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="16" fill="#fff" letter-spacing="1">WHAT YOU SELL</text>
+  <rect x="60" y="112" width="220" height="56" rx="28" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="170" y="147" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="16" fill="#fff" letter-spacing="1">WHAT THEY WANT</text>
+  <rect x="90" y="194" width="200" height="56" rx="28" fill="#0a0a0a" stroke="#FF2D7B" stroke-width="2"/>
+  <text x="190" y="229" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="16" fill="#FF2D7B" letter-spacing="1">WHY THEY BUY</text>
+  <path d="M 145 86 L 165 112" stroke="#FF6FA8" stroke-width="2" stroke-dasharray="3 4"/>
+  <path d="M 195 168 L 215 194" stroke="#FF6FA8" stroke-width="2" stroke-dasharray="3 4"/>
+</svg></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="proc-item">
+      <summary class="proc-summary">
+        <span class="proc-num">02</span>
+        <div class="proc-summary-text">
+          <span class="proc-name">Creative</span>
+          <span class="proc-tagline">The vehicle for the message</span>
+        </div>
+        <span class="proc-icon">+</span>
+      </summary>
+      <div class="proc-body">
+        <div class="proc-body-grid">
+          <div class="proc-text">
+            <p class="proc-intro">Strategy without creative is a deck no one reads. Creative without strategy is content for the sake of content. The job is to put the right thing in front of the right person on the right platform — and let the data sort it out.</p>
+        <ul class="proc-list">
+          <li><strong>Ideation.</strong> Hooks, angles, frameworks. I bring the concepts; the right creators bring them to life.</li>
+          <li><strong>The right person creating it.</strong> A UGC creator who actually fits your audience hits different than a generic studio shoot. Casting matters more than production value.</li>
+          <li><strong>The right format for the right platform.</strong> Meta favors tight, clean, polished. TikTok favors native, raw, UGC. Running the same creative on both is how you burn a budget.</li>
+          <li><strong>Tested before scaled.</strong> No creative goes wide without earning it. We test with discipline and let the data pick winners.</li>
+          <li><strong>Used to define audiences.</strong> In a post-targeting world, creative <em>is</em> the targeting. Different angles attract different buyer segments. We use them to map your market.</li>
+          <li><strong>Built around Meta's Andromeda model.</strong> Meta's AI ad system rewards creative volume and variation. Most marketers haven't caught up. I have.</li>
+        </ul>
+          </div>
+          <div class="proc-visual"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" class="proc-svg" aria-hidden="true">
+  <g>
+    <rect x="20" y="20" width="80" height="80" rx="8" fill="#1a1a1f" stroke="rgba(255,255,255,0.08)"/>
+    <circle cx="60" cy="60" r="18" fill="#FF2D7B" opacity="0.7"/>
+    <rect x="110" y="20" width="80" height="80" rx="8" fill="#1a1a1f" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="135" y="45" width="30" height="30" fill="#C1FF3A" opacity="0.7"/>
+    <rect x="200" y="20" width="80" height="80" rx="8" fill="#FF2D7B" stroke="#FF2D7B" stroke-width="2"/>
+    <path d="M 225 60 L 240 75 L 260 50" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="290" y="65" font-family="Barlow Condensed" font-weight="800" font-size="11" fill="#C1FF3A" letter-spacing="1">WIN</text>
+    <rect x="20" y="110" width="80" height="80" rx="8" fill="#1a1a1f" stroke="rgba(255,255,255,0.08)"/>
+    <path d="M 35 150 L 60 130 L 85 165" stroke="#FF6FA8" stroke-width="2" fill="none"/>
+    <rect x="110" y="110" width="80" height="80" rx="8" fill="#1a1a1f" stroke="rgba(255,255,255,0.08)"/>
+    <circle cx="150" cy="150" r="22" fill="none" stroke="#FF6FA8" stroke-width="2" stroke-dasharray="3 3"/>
+    <rect x="200" y="110" width="80" height="80" rx="8" fill="#1a1a1f" stroke="rgba(255,255,255,0.08)"/>
+    <line x1="215" y1="150" x2="265" y2="150" stroke="#FF6FA8" stroke-width="2"/>
+    <line x1="240" y1="125" x2="240" y2="175" stroke="#FF6FA8" stroke-width="2"/>
+    <text x="155" y="225" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="13" fill="rgba(255,255,255,0.6)" letter-spacing="2">TEST · LEARN · SCALE</text>
+  </g>
+</svg></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="proc-item">
+      <summary class="proc-summary">
+        <span class="proc-num">03</span>
+        <div class="proc-summary-text">
+          <span class="proc-name">Hooks</span>
+          <span class="proc-tagline">The first three seconds</span>
+        </div>
+        <span class="proc-icon">+</span>
+      </summary>
+      <div class="proc-body">
+        <div class="proc-body-grid">
+          <div class="proc-text">
+            <p class="proc-intro">You have three seconds. Maybe two. Hook fails, everything after it is dead spend. So we engineer the opening like a job interview where the interviewer is also scrolling Instagram.</p>
+        <ul class="proc-list">
+          <li><strong>First three seconds.</strong> Pattern interrupt, fast cut, or a sentence that demands the next one. Anything less and you're paying for an impression no one saw.</li>
+          <li><strong>Audience callouts.</strong> "If you're a [specific person], stop scrolling." Done right, the wrong audience swipes away and your CPM drops on the right one.</li>
+          <li><strong>Eye-catching visuals.</strong> Movement, contrast, unexpected color. The phone is fighting you. We fight back.</li>
+          <li><strong>Bait-and-switch openings.</strong> Lead with something that has nothing to do with the product, then earn the pivot. Done well, it's one of the best-performing hook styles on the platform right now.</li>
+          <li><strong>Questions.</strong> Implant a thought they want answered. Now they have to keep watching to get it.</li>
+          <li><strong>Shock or surprise.</strong> Used sparingly. Used honestly. Earned attention only.</li>
+        </ul>
+          </div>
+          <div class="proc-visual"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" class="proc-svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="hook-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF2D7B" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FF2D7B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="160" cy="140" r="120" fill="url(#hook-glow)"/>
+  <text x="160" y="170" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="120" fill="#FF2D7B" letter-spacing="-2">3</text>
+  <text x="160" y="200" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="14" fill="rgba(255,255,255,0.7)" letter-spacing="3">SECONDS</text>
+  <g stroke="#FF6FA8" stroke-width="2" stroke-linecap="round">
+    <line x1="50" y1="50" x2="70" y2="70"/>
+    <line x1="270" y1="50" x2="250" y2="70"/>
+    <line x1="50" y1="230" x2="70" y2="210"/>
+    <line x1="270" y1="230" x2="250" y2="210"/>
+    <line x1="30" y1="140" x2="55" y2="140"/>
+    <line x1="265" y1="140" x2="290" y2="140"/>
+    <line x1="160" y1="30" x2="160" y2="50"/>
+    <line x1="160" y1="230" x2="160" y2="250"/>
+  </g>
+</svg></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="proc-item">
+      <summary class="proc-summary">
+        <span class="proc-num">04</span>
+        <div class="proc-summary-text">
+          <span class="proc-name">Offers</span>
+          <span class="proc-tagline">The reason they actually click</span>
+        </div>
+        <span class="proc-icon">+</span>
+      </summary>
+      <div class="proc-body">
+        <div class="proc-body-grid">
+          <div class="proc-text">
+            <p class="proc-intro">Offer beats copy. Always has. The slickest creative in the world can't sell a bad deal, and a great deal can carry mediocre creative. We treat the offer like part of the product itself.</p>
+        <ul class="proc-list">
+          <li><strong>Product value.</strong> The actual offer architecture. Bundles, tiers, anchoring, urgency. The same product packaged five different ways will convert five different ways.</li>
+          <li><strong>Discounts.</strong> Real ones. Not the kind where everyone knows it's always 30% off. Discount discipline protects margin and protects trust.</li>
+          <li><strong>Promos.</strong> Seasonal, behavioral, retargeting-triggered. Promo strategy is its own discipline and most brands wing it.</li>
+          <li><strong>Different value props for different segments.</strong> Cold traffic gets a different reason to buy than warm. Same product, different doorway.</li>
+        </ul>
+          </div>
+          <div class="proc-visual"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" class="proc-svg" aria-hidden="true">
+  <g>
+    <rect x="80" y="40" width="160" height="40" rx="6" fill="#FF2D7B"/>
+    <text x="160" y="65" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="15" fill="#fff" letter-spacing="2">PREMIUM</text>
+    <text x="250" y="65" font-family="Barlow Condensed" font-weight="700" font-size="14" fill="#C1FF3A">$199</text>
+    <rect x="65" y="100" width="190" height="40" rx="6" fill="#1f1f25" stroke="rgba(255,255,255,0.12)"/>
+    <text x="160" y="125" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="15" fill="#fff" letter-spacing="2">STANDARD</text>
+    <text x="265" y="125" font-family="Barlow Condensed" font-weight="700" font-size="14" fill="rgba(255,255,255,0.7)">$99</text>
+    <rect x="50" y="160" width="220" height="40" rx="6" fill="#15151a" stroke="rgba(255,255,255,0.08)"/>
+    <text x="160" y="185" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="15" fill="rgba(255,255,255,0.65)" letter-spacing="2">STARTER</text>
+    <text x="275" y="185" font-family="Barlow Condensed" font-weight="700" font-size="14" fill="rgba(255,255,255,0.55)">$49</text>
+    <text x="160" y="240" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="12" fill="#FF6FA8" letter-spacing="3">ANCHOR · BUNDLE · CONVERT</text>
+  </g>
+</svg></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="proc-item">
+      <summary class="proc-summary">
+        <span class="proc-num">05</span>
+        <div class="proc-summary-text">
+          <span class="proc-name">CRO</span>
+          <span class="proc-tagline">From click to checkout</span>
+        </div>
+        <span class="proc-icon">+</span>
+      </summary>
+      <div class="proc-body">
+        <div class="proc-body-grid">
+          <div class="proc-text">
+            <p class="proc-intro">Most brands obsess over getting the click. The click is the easy part. CRO is what happens between the ad and the credit card — and it's where most of your money is actually being lost.</p>
+        <ul class="proc-list">
+          <li><strong>Seamless traffic from LP to purchase.</strong> Every step audited for friction. Form fields, page load, checkout flow, payment options. We trim until it's invisible.</li>
+          <li><strong>Education vs speed.</strong> Some products convert on impulse. Others need to be explained. Knowing which one you're selling decides everything about the funnel architecture.</li>
+        </ul>
+          </div>
+          <div class="proc-visual"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" class="proc-svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="funnel-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF2D7B" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FF2D7B" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+  <path d="M 40 30 L 280 30 L 220 130 L 220 250 L 100 250 L 100 130 Z" fill="url(#funnel-grad)" stroke="#FF2D7B" stroke-width="1.5"/>
+  <circle cx="90" cy="50" r="3" fill="#fff"/>
+  <circle cx="140" cy="55" r="3" fill="#fff"/>
+  <circle cx="190" cy="48" r="3" fill="#fff"/>
+  <circle cx="230" cy="52" r="3" fill="#fff"/>
+  <circle cx="260" cy="50" r="3" fill="#fff"/>
+  <circle cx="115" cy="80" r="3" fill="#fff" opacity="0.85"/>
+  <circle cx="175" cy="85" r="3" fill="#fff" opacity="0.85"/>
+  <circle cx="215" cy="78" r="3" fill="#fff" opacity="0.85"/>
+  <circle cx="135" cy="110" r="3" fill="#fff" opacity="0.7"/>
+  <circle cx="185" cy="115" r="3" fill="#fff" opacity="0.7"/>
+  <circle cx="155" cy="160" r="4" fill="#C1FF3A"/>
+  <circle cx="175" cy="190" r="4" fill="#C1FF3A"/>
+  <circle cx="160" cy="220" r="5" fill="#C1FF3A"/>
+  <text x="160" y="25" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="11" fill="rgba(255,255,255,0.6)" letter-spacing="2">CLICKS IN</text>
+  <text x="160" y="275" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="12" fill="#C1FF3A" letter-spacing="2">REVENUE OUT</text>
+</svg></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="proc-item">
+      <summary class="proc-summary">
+        <span class="proc-num">06</span>
+        <div class="proc-summary-text">
+          <span class="proc-name">Website</span>
+          <span class="proc-tagline">The home base</span>
+        </div>
+        <span class="proc-icon">+</span>
+      </summary>
+      <div class="proc-body">
+        <div class="proc-body-grid">
+          <div class="proc-text">
+            <p class="proc-intro">Your site is the only thing in your funnel you fully control. Ads change. Algorithms change. Costs change. The site doesn't have to. It should be the most reliable salesperson on your team.</p>
+        <ul class="proc-list">
+          <li><strong>Design.</strong> First impression. A site that looks dated tells someone the product probably is too.</li>
+          <li><strong>Professionalism.</strong> Trust signals, social proof, copy that doesn't read like a Mad Lib.</li>
+          <li><strong>Education.</strong> The site has to explain what the ad couldn't. Long-form sections, FAQs, comparisons, demos — whatever the product needs.</li>
+          <li><strong>Easy to navigate.</strong> Same principle as CRO. If they can't find what they want in two clicks, they leave.</li>
+        </ul>
+          </div>
+          <div class="proc-visual"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" class="proc-svg" aria-hidden="true">
+  <rect x="30" y="30" width="260" height="200" rx="10" fill="#13131a" stroke="rgba(255,255,255,0.1)"/>
+  <rect x="30" y="30" width="260" height="28" rx="10" fill="#1c1c24"/>
+  <circle cx="48" cy="44" r="4" fill="#FF2D7B"/>
+  <circle cx="62" cy="44" r="4" fill="rgba(255,255,255,0.25)"/>
+  <circle cx="76" cy="44" r="4" fill="rgba(255,255,255,0.25)"/>
+  <rect x="110" y="38" width="160" height="12" rx="3" fill="rgba(255,255,255,0.08)"/>
+  <rect x="50" y="80" width="220" height="36" rx="4" fill="rgba(255,45,123,0.15)" stroke="rgba(255,45,123,0.4)"/>
+  <text x="160" y="103" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="14" fill="#fff" letter-spacing="2">HERO</text>
+  <rect x="50" y="130" width="105" height="40" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="165" y="130" width="105" height="40" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="50" y="184" width="220" height="32" rx="16" fill="#C1FF3A"/>
+  <text x="160" y="205" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="13" fill="#0a0a0a" letter-spacing="2">BUY NOW</text>
+  <text x="160" y="265" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="11" fill="rgba(255,255,255,0.55)" letter-spacing="2">DESIGNED TO SELL</text>
+</svg></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="process-summary">
+    <p>Six strands. Tested individually, woven together, pulled tight. <strong>A funnel only holds if every section is connected — from first touch to purchase.</strong> That's the plait.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="brand-story">
   <div class="section-label">Why "Plait"</div>
-  <h2 class="section-title">Alone they're weak.<br>Woven, they're unstoppable.</h2>
-  <p class="section-sub">A single strand can fray. Three strands plaited together hold under pressure. Your ads, your website, and your attribution are no different.</p>
+  <h2 class="section-title">A funnel only holds<br>when it's connected.</h2>
+  <p class="section-sub">From first impression to checkout, every step has to talk to the next. Break one link and the whole thing leaks. That's why I work like a plait — every strand of your funnel woven together, pulled tight, and tested under load.</p>
   <div class="brand-definition-bar">
     <div class="brand-def-word">plait <span class="brand-def-pron">/plāt/</span></div>
     <div class="brand-def-type">noun</div>
@@ -389,7 +806,7 @@
     <div class="plait-controls-wrap">
       <div>
         <div class="plait-controls-title">Toggle the strands</div>
-        <div class="plait-controls-sub">See what happens when one (or more) of your channels falls out of sync. Three strands working together is the only way the system holds.</div>
+        <div class="plait-controls-sub">Toggle a strand off and watch the system stop working. This is what happens to your funnel when ads, site, and tracking aren't speaking to each other.</div>
       </div>
       <div class="plait-toggles">
         <div class="plait-toggle active" data-strand="ads" onclick="toggleStrand('ads')">
@@ -418,21 +835,21 @@
     <div class="plait-canvas-wrap">
       <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" fill="none">
         <!-- Strand 1: Ads (left wave) -->
-        <path id="strand-ads" class="plait-strand-svg on" d="M 110 40 Q 220 80, 110 130 Q 220 180, 110 230 Q 220 280, 110 340" stroke="#3B82F6" stroke-width="6" stroke-linecap="round"/>
+        <path id="strand-ads" class="plait-strand-svg on" d="M 110 40 Q 220 80, 110 130 Q 220 180, 110 230 Q 220 280, 110 340" stroke="#FF2D7B" stroke-width="6" stroke-linecap="round"/>
         <!-- Strand 2: Site (right wave) -->
-        <path id="strand-site" class="plait-strand-svg on" d="M 270 40 Q 160 80, 270 130 Q 160 180, 270 230 Q 160 280, 270 340" stroke="#06B6D4" stroke-width="6" stroke-linecap="round"/>
+        <path id="strand-site" class="plait-strand-svg on" d="M 270 40 Q 160 80, 270 130 Q 160 180, 270 230 Q 160 280, 270 340" stroke="#C1FF3A" stroke-width="6" stroke-linecap="round"/>
         <!-- Strand 3: Attribution (center) -->
-        <path id="strand-attribution" class="plait-strand-svg on" d="M 190 40 L 190 340" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+        <path id="strand-attribution" class="plait-strand-svg on" d="M 190 40 L 190 340" stroke="#FF6FA8" stroke-width="6" stroke-linecap="round"/>
 
         <!-- Connection nodes -->
-        <circle id="node-1" class="plait-node" cx="190" cy="100" r="6" fill="#60A5FA"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/></circle>
-        <circle id="node-2" class="plait-node" cx="190" cy="180" r="6" fill="#06B6D4"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
-        <circle id="node-3" class="plait-node" cx="190" cy="260" r="6" fill="#3B82F6"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+        <circle id="node-1" class="plait-node" cx="190" cy="100" r="6" fill="#FF6FA8"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/></circle>
+        <circle id="node-2" class="plait-node" cx="190" cy="180" r="6" fill="#C1FF3A"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.5s" repeatCount="indefinite"/></circle>
+        <circle id="node-3" class="plait-node" cx="190" cy="260" r="6" fill="#FF2D7B"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
 
         <!-- Labels -->
-        <text x="110" y="20" text-anchor="middle" fill="#3B82F6" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">ADS</text>
-        <text x="190" y="20" text-anchor="middle" fill="#60A5FA" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">ATTRIBUTION</text>
-        <text x="270" y="20" text-anchor="middle" fill="#06B6D4" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">SITE</text>
+        <text x="110" y="20" text-anchor="middle" fill="#FF2D7B" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">ADS</text>
+        <text x="190" y="20" text-anchor="middle" fill="#FF6FA8" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">ATTRIBUTION</text>
+        <text x="270" y="20" text-anchor="middle" fill="#C1FF3A" font-family="Barlow Condensed" font-weight="800" font-size="11" letter-spacing="2">SITE</text>
       </svg>
     </div>
   </div>
@@ -442,176 +859,15 @@
     <div class="pillar"><div class="pillar-icon">🎯</div><div><div class="pillar-title">Clarity</div><div class="pillar-text">Attribution that actually tells the story. You see what's working, what isn't, and what to do next, in plain language.</div></div></div>
     <div class="pillar"><div class="pillar-icon">🔗</div><div><div class="pillar-title">One System</div><div class="pillar-text">Ads, website, and attribution working together instead of separately. When one strand learns, the others get sharper.</div></div></div>
   </div>
-  <div class="brand-conclusion">That's what happens when your <span>ads, website, and attribution</span> stop operating in isolation and start operating as one.</div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ROI CALCULATOR -->
-<section id="roi-calc">
-  <div class="section-label">See The Math</div>
-  <h2 class="section-title">What could a tighter<br>system unlock for you?</h2>
-  <p class="section-sub">A quick estimate of what optimization could mean for your business. Drop in your numbers and see the math.</p>
-
-  <div class="calc-toggle-row">
-    <button class="calc-toggle-btn active" id="btn-d2c" onclick="switchCalc('d2c')">
-      <span class="calc-toggle-icon">🛒</span>
-      <span class="calc-toggle-label">D2C / E-Commerce</span>
-      <span class="calc-toggle-desc">Product-based revenue</span>
-    </button>
-    <button class="calc-toggle-btn" id="btn-saas" onclick="switchCalc('saas')">
-      <span class="calc-toggle-icon">💻</span>
-      <span class="calc-toggle-label">SaaS / Subscription</span>
-      <span class="calc-toggle-desc">Recurring revenue</span>
-    </button>
-  </div>
-
-  <!-- D2C CALCULATOR -->
-  <div class="calc-card show" id="calc-d2c">
-    <div class="calc-grid">
-      <div class="calc-inputs">
-        <div class="calc-input-row">
-          <div class="calc-input-label">Monthly Ad Spend</div>
-          <div class="calc-input-wrap">
-            <span class="calc-input-prefix">$</span>
-            <input type="number" class="calc-input" id="d2c-spend" value="10000" oninput="calcD2C()">
-          </div>
-        </div>
-        <div class="calc-input-row">
-          <div class="calc-input-label">Current ROAS</div>
-          <div class="calc-input-wrap">
-            <input type="number" step="0.1" class="calc-input no-prefix" id="d2c-roas" value="2.5" oninput="calcD2C()">
-            <span class="calc-input-suffix">x</span>
-          </div>
-        </div>
-        <div class="calc-input-row">
-          <div class="calc-input-label">Average Order Value</div>
-          <div class="calc-input-wrap">
-            <span class="calc-input-prefix">$</span>
-            <input type="number" class="calc-input" id="d2c-aov" value="65" oninput="calcD2C()">
-          </div>
-        </div>
-        <div class="calc-input-row">
-          <div class="calc-input-label">Current CAC</div>
-          <div class="calc-input-wrap">
-            <span class="calc-input-prefix">$</span>
-            <input type="number" class="calc-input" id="d2c-cac" value="35" oninput="calcD2C()">
-          </div>
-        </div>
-      </div>
-
-      <div class="calc-results">
-        <div class="calc-result-label">Current Performance</div>
-        <div class="calc-result-row">
-          <div class="calc-result-num">$<span id="d2c-current-rev">25,000</span></div>
-          <div class="calc-result-detail">Monthly revenue at current ROAS</div>
-        </div>
-
-        <div class="calc-result-label" style="margin-top:0.5rem;">With Optimization (Conservative 25% ROAS Lift)</div>
-        <div class="calc-result-row">
-          <div class="calc-result-num lift">$<span id="d2c-new-rev">31,250</span></div>
-          <div class="calc-result-detail">Projected monthly revenue</div>
-        </div>
-        <div class="calc-result-row">
-          <div class="calc-result-num lift">+$<span id="d2c-monthly-lift">6,250</span><span style="font-size:1rem;color:var(--muted);">/mo</span></div>
-          <div class="calc-result-detail">Additional revenue per month</div>
-        </div>
-        <div class="calc-result-row">
-          <div class="calc-result-num lift">+$<span id="d2c-yearly-lift">75,000</span><span style="font-size:1rem;color:var(--muted);">/yr</span></div>
-          <div class="calc-result-detail">Additional revenue per year</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SAAS CALCULATOR -->
-  <div class="calc-card" id="calc-saas">
-    <div class="calc-grid">
-      <div class="calc-inputs">
-        <div class="calc-input-row">
-          <div class="calc-input-label">Monthly Ad Spend</div>
-          <div class="calc-input-wrap">
-            <span class="calc-input-prefix">$</span>
-            <input type="number" class="calc-input" id="saas-spend" value="15000" oninput="calcSaas()">
-          </div>
-        </div>
-        <div class="calc-input-row">
-          <div class="calc-input-label">Current CAC</div>
-          <div class="calc-input-wrap">
-            <span class="calc-input-prefix">$</span>
-            <input type="number" class="calc-input" id="saas-cac" value="180" oninput="calcSaas()">
-          </div>
-        </div>
-        <div class="calc-input-row">
-          <div class="calc-input-label">Average Subscription Price</div>
-          <div class="calc-input-wrap">
-            <span class="calc-input-prefix">$</span>
-            <input type="number" class="calc-input" id="saas-arpu" value="49" oninput="calcSaas()">
-            <span class="calc-input-suffix">/ mo</span>
-          </div>
-        </div>
-        <div class="calc-input-row">
-          <div class="calc-input-label">Average Monthly Churn</div>
-          <div class="calc-input-wrap">
-            <input type="number" step="0.1" class="calc-input no-prefix" id="saas-churn" value="5" oninput="calcSaas()">
-            <span class="calc-input-suffix">%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="calc-results">
-        <div class="calc-result-label">Current Performance</div>
-        <div class="calc-result-row">
-          <div class="calc-result-num"><span id="saas-current-customers">83</span></div>
-          <div class="calc-result-detail">New customers per month</div>
-        </div>
-        <div class="calc-result-row">
-          <div class="calc-result-num">$<span id="saas-current-ltv">980</span></div>
-          <div class="calc-result-detail">Lifetime value per customer (current)</div>
-        </div>
-
-        <div class="calc-result-label" style="margin-top:0.5rem;">With 40% CAC Reduction</div>
-        <div class="calc-result-row">
-          <div class="calc-result-num lift">$<span id="saas-new-cac">108</span></div>
-          <div class="calc-result-detail">New CAC after optimization</div>
-        </div>
-        <div class="calc-result-row">
-          <div class="calc-result-num lift"><span id="saas-new-customers">139</span></div>
-          <div class="calc-result-detail">New customers per month (+<span id="saas-customer-delta">56</span>)</div>
-        </div>
-        <div class="calc-result-row">
-          <div class="calc-result-num lift">+$<span id="saas-mrr-lift">2,744</span><span style="font-size:1rem;color:var(--muted);">/mo MRR</span></div>
-          <div class="calc-result-detail">Additional recurring revenue per month</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="calc-disclaimer">These are estimates based on real client outcomes. Your results depend on your specific business, market, and current setup. The math is yours to verify.</div>
-</section>
-
-<div class="divider"></div>
-
-<section id="process">
-  <div class="section-label">What You Can Expect</div>
-  <h2 class="section-title">Real outcomes.<br>Built into the process.</h2>
-  <p class="section-sub">Hover (or tap on mobile) any card to see what working with me actually unlocks for your business.</p>
-  <div class="process-grid">
-    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="flip-num">01 / Performance</div><div class="flip-title">Higher ROAS</div><div class="flip-hint">Tap to reveal</div></div><div class="flip-back"><div class="flip-num">01</div><div class="flip-back-text">Smarter spend, sharper targeting, and creative built to convert. Every dollar is accountable to a goal, and every campaign is structured to push return on ad spend up over time.</div></div></div></div>
-    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="flip-num">02 / Efficiency</div><div class="flip-title">Lower CAC</div><div class="flip-hint">Tap to reveal</div></div><div class="flip-back"><div class="flip-num">02</div><div class="flip-back-text">Tightened funnels, refined audience strategy, and continuous testing drive customer acquisition costs down. Less waste, more efficient growth.</div></div></div></div>
-    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="flip-num">03 / Visibility</div><div class="flip-title">Better Attribution</div><div class="flip-hint">Tap to reveal</div></div><div class="flip-back"><div class="flip-num">03</div><div class="flip-back-text">Clean tracking. Deduplicated events. Pixel and conversion API setups that tell the real story of where revenue actually comes from. No more guessing.</div></div></div></div>
-    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="flip-num">04 / Creative</div><div class="flip-title">Converting Content Strategy</div><div class="flip-hint">Tap to reveal</div></div><div class="flip-back"><div class="flip-num">04</div><div class="flip-back-text">I ideate the hooks, angles, and messaging that actually convert. I don't shoot the videos, but I can connect you with creators who do. Strategy first, production second.</div></div></div></div>
-    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="flip-num">05 / Discovery</div><div class="flip-title">New Audience Unlocks</div><div class="flip-hint">Tap to reveal</div></div><div class="flip-back"><div class="flip-num">05</div><div class="flip-back-text">Most brands only sell to one audience. I uncover the secondary and tertiary buyer markets you didn't know existed, opening up entirely new revenue streams through systematic testing.</div></div></div></div>
-    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="flip-num">06 / Foundation</div><div class="flip-title">A System That Compounds</div><div class="flip-hint">Tap to reveal</div></div><div class="flip-back"><div class="flip-num">06</div><div class="flip-back-text">Every test, campaign, and conversion feeds the next. You don't just get short-term wins, you get a learning system that gets sharper, more efficient, and more profitable over time.</div></div></div></div>
-  </div>
+  <div class="brand-conclusion">When your <span>ads, website, and tracking</span> stop operating in isolation, you stop paying for impressions and start buying customers.</div>
 </section>
 
 <div class="divider"></div>
 
 <section id="orbit-section">
-  <div class="section-label">My AI Edge</div>
-  <h2 class="section-title">Orbit. Built by me.<br>Working for you.</h2>
-  <p class="section-sub">Orbit is the AI agent I co-founded. It's how I deliver agency-quality work as a solo operator, and why my clients get more, faster, for less.</p>
+  <div class="section-label">The AI Part</div>
+  <h2 class="section-title">I built the AI.<br>The strategy is still mine.</h2>
+  <p class="section-sub">Everyone in marketing right now is using AI to do the thinking. That's the problem. If we're all feeding the same prompts to the same models, the work all comes out the same. So I built Orbit — the AI handles the volume, I keep the strategy.</p>
   <div class="orbit-inner">
     <div class="orbit-graphic">
       <div class="orbit-ring r3"><div class="orbit-dot"></div></div>
@@ -621,7 +877,7 @@
     </div>
     <div class="orbit-content">
       <a href="https://orbitllm.com/" target="_blank" class="orbit-badge">⚡ Visit orbitllm.com</a>
-      <p style="color:rgba(255,255,255,0.78);line-height:1.85;font-size:0.98rem;margin-bottom:1rem;">Most marketers guess. I connect insights. Orbit accelerates everything from research and audience discovery to creative ideation and campaign analysis, turning days of work into hours and uncovering patterns no human could spot alone.</p>
+      <p style="color:rgba(255,255,255,0.78);line-height:1.85;font-size:0.98rem;margin-bottom:1rem;">Orbit handles what AI is genuinely good at: research, audience discovery, creative iteration, campaign post-mortems, pattern recognition across thousands of data points. Days of work in hours. What it does not do is decide. That part stays with the human who has eight years of seeing how this actually plays out.</p>
       <div class="orbit-features">
         <div class="orbit-feature"><div class="orbit-feature-title">Day to Day</div><div class="orbit-feature-text">Research, ad copy iteration, creative briefs, audience analysis, and campaign post-mortems delivered at AI speed.</div></div>
         <div class="orbit-feature"><div class="orbit-feature-title">Long Term</div><div class="orbit-feature-text">Pattern recognition across campaigns and clients, building a strategic intelligence system that compounds over time.</div></div>
@@ -715,8 +971,8 @@
 <section id="contact-cta">
   <div class="contact-cta-inner">
     <div class="section-label">Let's Build</div>
-    <h2 class="section-title">Ready to turn your<br>traffic into revenue?</h2>
-    <p class="section-sub" style="margin:0 auto 2rem;">Whether you're starting from scratch or ready to scale, let's talk about what system makes sense for your business.</p>
+    <h2 class="section-title">Tired of paying for<br>traffic that doesn't convert?</h2>
+    <p class="section-sub" style="margin:0 auto 2rem;">Whether your funnel is leaking, your ads are stale, or you're starting from zero — let's talk about what part of the plait needs tightening first.</p>
     <a href="contact.html" class="btn-primary">Get In Touch</a>
   </div>
 </section>
@@ -727,7 +983,7 @@
 </footer>
 
 <script>
-  const words = ["Higher Revenue","Paid Advertising","Conversion Rate Optimization","Web Buildouts","Creating Winning Ads","Attribution"];
+  const words = ["Scale.","Convert.","Compound.","Stop Guessing.","Actually Grow."];
   let wordIndex = 0, charIndex = 0, isDeleting = false;
   const el = document.getElementById('dynamic-text');
   const moneyContainer = document.getElementById('moneyExplosion');
@@ -761,7 +1017,7 @@
       el.textContent = word.substring(0, charIndex + 1);
       charIndex++;
       if (charIndex === word.length) {
-        if (word === "Higher Revenue") explodeMoney();
+        if (word === "Actually Grow.") explodeMoney();
         setTimeout(() => { isDeleting = true; type(); }, 2000);
         return;
       }
@@ -899,57 +1155,10 @@
   // ============ ROI CALCULATORS ============
   function fmt(n) { return Math.round(n).toLocaleString(); }
 
-  function switchCalc(type) {
-    document.getElementById('btn-d2c').classList.toggle('active', type === 'd2c');
-    document.getElementById('btn-saas').classList.toggle('active', type === 'saas');
-    document.getElementById('calc-d2c').classList.toggle('show', type === 'd2c');
-    document.getElementById('calc-saas').classList.toggle('show', type === 'saas');
-  }
 
-  function calcD2C() {
-    const spend = parseFloat(document.getElementById('d2c-spend').value) || 0;
-    const roas = parseFloat(document.getElementById('d2c-roas').value) || 0;
-    const aov = parseFloat(document.getElementById('d2c-aov').value) || 0;
-    const cac = parseFloat(document.getElementById('d2c-cac').value) || 0;
 
-    const currentRev = spend * roas;
-    const newRoas = roas * 1.25; // 25% lift
-    const newRev = spend * newRoas;
-    const monthlyLift = newRev - currentRev;
-    const yearlyLift = monthlyLift * 12;
-
-    document.getElementById('d2c-current-rev').textContent = fmt(currentRev);
-    document.getElementById('d2c-new-rev').textContent = fmt(newRev);
-    document.getElementById('d2c-monthly-lift').textContent = fmt(monthlyLift);
-    document.getElementById('d2c-yearly-lift').textContent = fmt(yearlyLift);
-  }
-
-  function calcSaas() {
-    const spend = parseFloat(document.getElementById('saas-spend').value) || 0;
-    const cac = parseFloat(document.getElementById('saas-cac').value) || 0;
-    const arpu = parseFloat(document.getElementById('saas-arpu').value) || 0;
-    const churn = parseFloat(document.getElementById('saas-churn').value) || 1;
-
-    const currentCustomers = cac > 0 ? spend / cac : 0;
-    const ltv = churn > 0 ? arpu / (churn / 100) : 0;
-
-    const newCac = cac * 0.6; // 40% reduction
-    const newCustomers = newCac > 0 ? spend / newCac : 0;
-    const customerDelta = newCustomers - currentCustomers;
-    const mrrLift = customerDelta * arpu;
-
-    document.getElementById('saas-current-customers').textContent = fmt(currentCustomers);
-    document.getElementById('saas-current-ltv').textContent = fmt(ltv);
-    document.getElementById('saas-new-cac').textContent = fmt(newCac);
-    document.getElementById('saas-new-customers').textContent = fmt(newCustomers);
-    document.getElementById('saas-customer-delta').textContent = fmt(customerDelta);
-    document.getElementById('saas-mrr-lift').textContent = fmt(mrrLift);
-  }
 
   // Initial calc runs
-  calcD2C();
-  calcSaas();
-
   // ============ SCROLL REVEAL ============
   const revealTargets = document.querySelectorAll('section .section-title, section .section-sub, .process-grid, .case-snippet-grid, .packages-grid, .calc-card, .plait-interactive, .brand-pillars-row, .orbit-inner, .carousel-wrap');
   revealTargets.forEach(el => el.classList.add('reveal'));
